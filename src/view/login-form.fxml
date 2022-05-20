@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.LoginFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #D3E1F8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <Label layoutX="270.0" layoutY="238.0" opacity="0.3" prefHeight="293.0" prefWidth="485.0" style="-fx-background-color: #ffffff; -fx-background-radius: 1em;" />
+      <JFXPasswordField labelFloat="true" layoutX="333.0" layoutY="359.0" prefHeight="35.0" prefWidth="356.0" promptText="Password" />
+      <JFXTextField labelFloat="true" layoutX="333.0" layoutY="302.0" prefHeight="35.0" prefWidth="356.0" promptText="User Name" />
+      <JFXButton layoutX="561.0" layoutY="425.0" onAction="#signInOnAction" prefHeight="28.0" prefWidth="128.0" style="-fx-border-color: #808080;" text="Sign In" />
+   </children>
 </AnchorPane>
