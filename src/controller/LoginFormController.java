@@ -7,40 +7,32 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import model.UserDTO;
+import view.util.Utilities;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class LoginFormController {
     public AnchorPane context;
-    public JFXPasswordField pwptxt;
-    public JFXTextField usertxt;
-    public Label createbtn;
-    public JFXButton signinbtn;
-    public JFXComboBox stasuscmb;
-    public JFXButton signupbtn;
+    public JFXPasswordField txtPwp;
+    public JFXTextField txtUser;
+    public JFXButton btnAdministratorSign;
+    public Label btnCreate;
+    public JFXComboBox cmbStatus;
+    public JFXButton btnSignup;
+    public JFXButton btnCashierSign;
 
-    public void initialize(){
-        ObservableList observableList=FXCollections.observableArrayList();
+
+    public void initialize() {
+        ObservableList observableList = FXCollections.observableArrayList();
         observableList.add("Administrator");
         observableList.add("Cashier");
-        stasuscmb.setItems(observableList);
-    }
-
-    public static ArrayList<UserDTO> user=new ArrayList<>();
-
-    public void signInOnAction(ActionEvent actionEvent) throws IOException {
-        if (usertxt.getText().isEmpty() && pwptxt.getText().isEmpty()){
-
-        }else {
-
-            util.Utilities.loadui(context, "dashboard-form");
-        }
-
+        cmbStatus.setItems(observableList);
     }
 
     public void createAccountOnAction(MouseEvent mouseEvent) throws IOException {
@@ -48,27 +40,40 @@ public class LoginFormController {
     }
 
     public void signupOnAction(ActionEvent actionEvent) {
-        if (usertxt.getText().isEmpty() && pwptxt.getText().isEmpty() && stasuscmb.getValue().equals("")){
+        if (txtUser.getText().isEmpty() && txtPwp.getText().isEmpty() && cmbStatus.getValue().equals("")) {
             System.out.println("create");
-        }else {
-            user.add(new UserDTO(usertxt.getText(),pwptxt.getText(), (String) stasuscmb.getValue()));
+        } else {
+
             loginVisible();
         }
 
     }
 
     public void createVisible() {
-        signinbtn.setVisible(false);
-        createbtn.setVisible(false);
-        stasuscmb.setVisible(true);
-        signupbtn.setVisible(true);
+        btnAdministratorSign.setVisible(false);
+        btnCashierSign.setVisible(false);
+        btnCreate.setVisible(false);
+        cmbStatus.setVisible(true);
+        btnSignup.setVisible(true);
     }
 
     public void loginVisible() {
-        signinbtn.setVisible(true);
-        createbtn.setVisible(true);
-        stasuscmb.setVisible(false);
-        signupbtn.setVisible(false);
+        btnAdministratorSign.setVisible(true);
+        btnCashierSign.setVisible(true);
+        btnCreate.setVisible(true);
+        cmbStatus.setVisible(false);
+        btnSignup.setVisible(false);
     }
 
+    public void AdministratorSignInOnAction(ActionEvent actionEvent) throws IOException {
+        context.getChildren().clear();
+        Parent parent= FXMLLoader.load(getClass().getResource("../view/Admin-dashboard-form.fxml"));
+        context.getChildren().add(parent);
+    }
+
+    public void CashierSignInOnAction(ActionEvent actionEvent) throws IOException {
+        context.getChildren().clear();
+        Parent parent= FXMLLoader.load(getClass().getResource("../view/cashier-dashboard-form.fxml"));
+        context.getChildren().add(parent);
+    }
 }

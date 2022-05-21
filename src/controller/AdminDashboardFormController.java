@@ -2,7 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 
-public class DashboardFormController {
+public class AdminDashboardFormController {
     public JFXButton btnItem;
 
     public void AdministratorLogin(){
