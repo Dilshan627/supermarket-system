@@ -1,18 +1,17 @@
 package view.tm;
 
-import java.math.BigDecimal;
 
 public class ItemTM {
     private String code;
     private String description;
     private String packageSize;
-    private BigDecimal unitPrice;
+    private Double unitPrice;
     private int qtyOnHand;
 
     public ItemTM() {
     }
 
-    public ItemTM(String code, String description, String packageSize, BigDecimal unitPrice, int qtyOnHand) {
+    public ItemTM(String code, String description, String packageSize, Double unitPrice, int qtyOnHand) {
         this.code = code;
         this.description = description;
         this.packageSize = packageSize;
@@ -44,11 +43,11 @@ public class ItemTM {
         this.packageSize = packageSize;
     }
 
-    public BigDecimal getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(BigDecimal unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 

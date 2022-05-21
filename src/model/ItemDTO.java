@@ -6,13 +6,13 @@ public class ItemDTO {
     private String code;
     private String description;
     private String packageSize;
-    private BigDecimal unitPrice;
+    private Double unitPrice;
     private int qtyOnHand;
 
     public ItemDTO() {
     }
 
-    public ItemDTO(String code, String description, String packageSize, BigDecimal unitPrice, int qtyOnHand) {
+    public ItemDTO(String code, String description, String packageSize, Double unitPrice, int qtyOnHand) {
         this.code = code;
         this.description = description;
         this.packageSize = packageSize;
@@ -44,11 +44,11 @@ public class ItemDTO {
         this.packageSize = packageSize;
     }
 
-    public BigDecimal getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(BigDecimal unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
