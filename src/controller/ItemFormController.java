@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -17,12 +18,12 @@ import view.tm.ItemTM;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ItemFormController {
     private final ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
     public AnchorPane context;
     public JFXButton btnAddNewItem;
-    public JFXTextField txtCode;
     public JFXTextField txtDescription;
     public JFXTextField txtUnitPrice;
     public JFXTextField txtQtyOnHand;
@@ -30,6 +31,7 @@ public class ItemFormController {
     public JFXButton btnDelete;
     public TableView<ItemTM> tblItems;
     public JFXTextField txtPackageSize;
+    public Label txtCode;
 
     public void initialize() {
         tblItems.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -51,16 +53,12 @@ public class ItemFormController {
                 txtUnitPrice.setText(newValue.getUnitPrice().toString());
                 txtQtyOnHand.setText(newValue.getQtyOnHand() + "");
 
-                txtCode.setDisable(false);
-                txtDescription.setDisable(false);
-                txtPackageSize.setDisable(false);
-                txtUnitPrice.setDisable(false);
-                txtQtyOnHand.setDisable(false);
             }
         });
 
         txtQtyOnHand.setOnAction(event -> btnSave.fire());
-       // loadAllItems();
+        loadAllItems();
+       txtCode.setText(generateNewId());
     }
 
     private void loadAllItems() {
@@ -80,13 +78,18 @@ public class ItemFormController {
     }
 
     public void btnAddNew_OnAction(ActionEvent actionEvent) {
+        txtCode.setText(generateNewId());
+        txtDescription.clear();
+        txtPackageSize.clear();
+        txtQtyOnHand.clear();
+        txtUnitPrice.clear();
     }
 
     public void btnSave_OnAction(ActionEvent actionEvent) {
         String code = txtCode.getText();
         String description = txtDescription.getText();
         String packageSize = txtPackageSize.getText();
-        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        Double unitPrice = Double.parseDouble(txtUnitPrice.getText());
         int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
 
         if (!description.matches("[A-Za-z0-9 ]+")) {
@@ -147,9 +150,35 @@ public class ItemFormController {
     public void btnDelete_OnAction(ActionEvent actionEvent) {
     }
 
+    private String generateNewId() {
+        try {
+            itemBO.generateNewItemCode();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (tblItems.getItems().isEmpty()) {
+            return "I00-001";
+
+        } else {
+            String id = getLastItemId();
+            int newItemId = Integer.parseInt(id.replace("I00-", "")) + 1;
+            return String.format("I00-%03d", newItemId);
+        }
+    }
+
+    private String getLastItemId() {
+        ArrayList<ItemTM> tempItemList = new ArrayList<>(tblItems.getItems());
+        Arrays.sort(new ArrayList[]{tempItemList});
+        return tempItemList.get(tempItemList.size() - 1).getCode();
+    }
+
     public void logoutOnAction(ActionEvent actionEvent) throws IOException {
         context.getChildren().clear();
         Parent parent = FXMLLoader.load(getClass().getResource("../view/login-form.fxml"));
         context.getChildren().add(parent);
     }
+
 }

@@ -27,8 +27,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean update(Item dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(Item entity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeUpdate("UPDATE Item SET WHERE code=?", entity.getDescription(), entity.getUnitPrice(), entity.getPackageSize(), entity.getQtyOnHand(), entity.getCode());
+
     }
 
     @Override
@@ -37,8 +38,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean exist(String s) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean exist(String code) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeQuery("SELECT ItemCode FROM Item WHERE ItemCode=?", code).next();
+
     }
 
     @Override
@@ -48,6 +50,13 @@ public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.executeQuery("SELECT ItemCode FROM Item ORDER BY ItemCode DESC LIMIT 1;");
+        if (rst.next()) {
+            String id = rst.getString("ItemCode");
+            int newItemId = Integer.parseInt(id.replace("I00-", "")) + 1;
+            return String.format("I00-%03d", newItemId);
+        } else {
+            return "I00-001";
+        }
     }
 }
