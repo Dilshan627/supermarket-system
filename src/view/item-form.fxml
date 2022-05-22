@@ -39,7 +39,7 @@
          <font>
             <Font size="14.0" />
          </font></JFXTextField>
-      <Label fx:id="txtCode" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="82.0" prefHeight="43.0" prefWidth="179.0" style="-fx-border-color: #080808;" text="ggg" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+      <Label fx:id="txtCode" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="82.0" prefHeight="43.0" prefWidth="179.0" style="-fx-border-color: #080808;" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

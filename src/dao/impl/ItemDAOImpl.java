@@ -28,7 +28,7 @@ public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public boolean update(Item entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeUpdate("UPDATE Item SET WHERE code=?", entity.getDescription(), entity.getUnitPrice(), entity.getPackageSize(), entity.getQtyOnHand(), entity.getCode());
+        return SQLUtil.executeUpdate("UPDATE Item SET Description =? , PackSize=?, UnitPrice=?, QtyOnHand=?  WHERE ItemCode=?;", entity.getDescription(), entity.getPackageSize(), entity.getUnitPrice(), entity.getQtyOnHand(), entity.getCode());
 
     }
 
@@ -44,8 +44,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean delete(String code) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeUpdate("DELETE FROM Item WHERE ItemCode=?", code);
+
     }
 
     @Override

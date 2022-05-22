@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import model.ItemDTO;
 import view.tm.ItemTM;
 
@@ -42,10 +43,7 @@ public class ItemFormController {
 
 
         tblItems.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            btnDelete.setDisable(newValue == null);
             btnSave.setText(newValue != null ? "Update" : "Save");
-            btnSave.setDisable(newValue == null);
-
             if (newValue != null) {
                 txtCode.setText(newValue.getCode());
                 txtDescription.setText(newValue.getDescription());
@@ -58,15 +56,13 @@ public class ItemFormController {
 
         txtQtyOnHand.setOnAction(event -> btnSave.fire());
         loadAllItems();
-       txtCode.setText(generateNewId());
+        txtCode.setText(generateNewId());
     }
 
     private void loadAllItems() {
         tblItems.getItems().clear();
         try {
-
             ArrayList<ItemDTO> allItem = itemBO.getAllItems();
-
             for (ItemDTO item : allItem) {
                 tblItems.getItems().add(new ItemTM(item.getCode(), item.getDescription(), item.getPackageSize(), item.getUnitPrice(), item.getQtyOnHand()));
             }
@@ -83,64 +79,85 @@ public class ItemFormController {
         txtPackageSize.clear();
         txtQtyOnHand.clear();
         txtUnitPrice.clear();
+        btnSave.setText("Save");
+        txtDescription.requestFocus();
+        tblItems.getSelectionModel().clearSelection();
     }
 
     public void btnSave_OnAction(ActionEvent actionEvent) {
-        String code = txtCode.getText();
-        String description = txtDescription.getText();
-        String packageSize = txtPackageSize.getText();
-        Double unitPrice = Double.parseDouble(txtUnitPrice.getText());
-        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
 
-        if (!description.matches("[A-Za-z0-9 ]+")) {
-            new Alert(Alert.AlertType.ERROR, "Invalid description").show();
-            txtDescription.requestFocus();
-            return;
-        } else if (!txtUnitPrice.getText().matches("^[0-9]+[.]?[0-9]*$")) {
-            new Alert(Alert.AlertType.ERROR, "Invalid unit price").show();
-            txtUnitPrice.requestFocus();
-            return;
-        } else if (!txtQtyOnHand.getText().matches("^\\d+$")) {
-            new Alert(Alert.AlertType.ERROR, "Invalid qty on hand").show();
-            txtQtyOnHand.requestFocus();
-            return;
-        }
+        if ( isValid() && txtDescription.getLength()!=0 && txtUnitPrice.getLength()!=0 && txtQtyOnHand.getLength()!=0 && txtPackageSize.getLength()!=0){
+
+            String code = txtCode.getText();
+            String description = txtDescription.getText();
+            String packageSize = txtPackageSize.getText();
+            Double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+            int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
 
 
-        if (btnSave.getText().equalsIgnoreCase("save")) {
-            try {
-                if (existItem(code)) {
-                    new Alert(Alert.AlertType.ERROR, code + " already exists").show();
+            if (btnSave.getText().equalsIgnoreCase("save")) {
+                try {
+                    if (existItem(code)) {
+                        new Alert(Alert.AlertType.ERROR, code + " already exists").show();
+                    }
+                    //Save Item
+                    itemBO.saveItem(new ItemDTO(code, description, packageSize, unitPrice, qtyOnHand));
+
+                    tblItems.getItems().add(new ItemTM(code, description, packageSize, unitPrice, qtyOnHand));
+
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
-                //Save Item
-                itemBO.saveItem(new ItemDTO(code, description, packageSize, unitPrice, qtyOnHand));
+            } else {
+                try {
+                    if (!existItem(code)) {
+                        new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
+                    }
+                    itemBO.updateItem(new ItemDTO(code, description, packageSize, unitPrice, qtyOnHand));
 
-                tblItems.getItems().add(new ItemTM(code, description, packageSize, unitPrice, qtyOnHand));
-
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                if (!existItem(code)) {
-                    new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
+                    ItemTM selectedItem = tblItems.getSelectionModel().getSelectedItem();
+                    selectedItem.setDescription(description);
+                    selectedItem.setPackageSize(packageSize);
+                    selectedItem.setQtyOnHand(qtyOnHand);
+                    selectedItem.setUnitPrice(unitPrice);
+                    tblItems.refresh();
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
-                itemBO.updateItem(new ItemDTO(code, description, packageSize, unitPrice, qtyOnHand));
-
-                ItemTM selectedItem = tblItems.getSelectionModel().getSelectedItem();
-                selectedItem.setDescription(description);
-                selectedItem.setQtyOnHand(qtyOnHand);
-                selectedItem.setUnitPrice(unitPrice);
-                tblItems.refresh();
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
+            btnAddNewItem.fire();
+
         }
-        btnAddNewItem.fire();
+    }
+
+    private boolean isValid() {
+         boolean des = txtDescription.getText().matches("[A-Za-z0-9 ]+");
+         boolean pac = txtPackageSize.getText().matches("[A-Za-z0-9 ]+");
+         boolean uni = txtUnitPrice.getText().matches("^[0-9]+[.]?[0-9]*$") ;
+         boolean qty = txtQtyOnHand.getText().matches("^\\d+$");
+
+         if (des){
+             txtDescription.setFocusColor(Paint.valueOf("#4059a9"));
+         }else if (pac){
+             txtPackageSize.setFocusColor(Paint.valueOf("#4059a9"));
+         }else if (uni){
+             txtUnitPrice.setFocusColor(Paint.valueOf("#4059a9"));
+         }else if (qty){
+             txtQtyOnHand.setFocusColor(Paint.valueOf("#4059a9"));
+         }else {
+             txtDescription.setFocusColor(Paint.valueOf("#FF0000"));
+             txtPackageSize.setFocusColor(Paint.valueOf("#FF0000"));
+             txtUnitPrice.setFocusColor(Paint.valueOf("#FF0000"));
+             txtQtyOnHand.setFocusColor(Paint.valueOf("#FF0000"));
+         }
+
+        if (des && pac && uni && qty){
+            return true;
+        }else { return false;}
     }
 
     private boolean existItem(String code) throws SQLException, ClassNotFoundException {
@@ -148,6 +165,23 @@ public class ItemFormController {
     }
 
     public void btnDelete_OnAction(ActionEvent actionEvent) {
+
+        if (txtDescription.getLength()!=0 && txtUnitPrice.getLength()!=0 && txtQtyOnHand.getLength()!=0 && txtPackageSize.getLength()!=0){
+            String code = tblItems.getSelectionModel().getSelectedItem().getCode();
+            try {
+                if (!existItem(code)) {
+                    new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
+                }
+                itemBO.deleteItem(code);
+                tblItems.getItems().remove(tblItems.getSelectionModel().getSelectedItem());
+                tblItems.getSelectionModel().clearSelection();
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to delete the item " + code).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     private String generateNewId() {
@@ -180,5 +214,8 @@ public class ItemFormController {
         Parent parent = FXMLLoader.load(getClass().getResource("../view/login-form.fxml"));
         context.getChildren().add(parent);
     }
+
+
+
 
 }
