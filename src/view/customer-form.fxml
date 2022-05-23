@@ -2,34 +2,38 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController">
    <children>
       <JFXButton id="btnAddNewCustomer" fx:id="btnAddNewCustomer" layoutX="704.0" layoutY="39.0" onAction="#btnAddNew_OnAction" prefHeight="35.0" prefWidth="122.0" style="-fx-cursor: hand;" text="+ New Customer" />
-      <JFXTextField fx:id="txtCustomerId" labelFloat="true" layoutX="206.0" layoutY="89.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer ID :">
-         <font>
-            <Font name="Ubuntu" size="13.0" />
-         </font>
-      </JFXTextField>
       <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="206.0" layoutY="188.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Name :" />
       <JFXTextField fx:id="txtCustomerAddress" labelFloat="true" layoutX="206.0" layoutY="236.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Address :" />
-      <JFXButton id="btnSave" fx:id="btnSave" layoutX="435.0" layoutY="407.0" onAction="#btnSave_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Save" />
-      <JFXButton id="btnDelete" fx:id="btnDelete" layoutX="519.0" layoutY="407.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Delete" />
-      <TableView fx:id="tblCustomers" layoutX="211.0" layoutY="445.0" prefHeight="285.0" prefWidth="615.0">
+      <JFXButton id="btnSave" fx:id="btnSave" layoutX="435.0" layoutY="414.0" onAction="#btnSave_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Save" />
+      <JFXButton id="btnDelete" fx:id="btnDelete" layoutX="519.0" layoutY="414.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Delete" />
+      <TableView fx:id="tblCustomers" layoutX="23.0" layoutY="465.0" prefHeight="285.0" prefWidth="992.0">
          <columns>
             <TableColumn prefWidth="97.0" text="Customer ID" />
-            <TableColumn prefWidth="230.0" text="Customer Name" />
-            <TableColumn prefWidth="282.0" text="Customer Address" />
+            <TableColumn prefWidth="148.0" text="Customer Title" />
+            <TableColumn prefWidth="169.0" text="Customer Name" />
+            <TableColumn prefWidth="160.0" text="Customer Address" />
+            <TableColumn prefWidth="168.0" text="Customer City" />
+            <TableColumn prefWidth="130.0" text="Province" />
+            <TableColumn prefWidth="114.0" text="Postal Code" />
          </columns>
       </TableView>
-      <JFXTextField fx:id="txtCustomerName1" labelFloat="true" layoutX="206.0" layoutY="145.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Name :" />
-      <JFXTextField fx:id="txtCustomerAddress1" labelFloat="true" layoutX="206.0" layoutY="277.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Address :" />
-      <JFXTextField fx:id="txtCustomerAddress2" labelFloat="true" layoutX="205.0" layoutY="319.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Address :" />
-      <JFXTextField fx:id="txtCustomerAddress3" labelFloat="true" layoutX="204.0" layoutY="368.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Address :" />
+      <JFXTextField fx:id="txtCustomerTitle" labelFloat="true" layoutX="206.0" layoutY="145.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Title :" />
+      <JFXTextField fx:id="txtCustomerCity" labelFloat="true" layoutX="206.0" layoutY="277.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer City :" />
+      <JFXTextField fx:id="txtCustomerProvince" labelFloat="true" layoutX="205.0" layoutY="319.0" prefHeight="28.0" prefWidth="615.0" promptText="Customer Province :" />
+      <JFXTextField fx:id="txtPostalCode" labelFloat="true" layoutX="206.0" layoutY="369.0" prefHeight="28.0" prefWidth="615.0" promptText="Postal Code :" />
+      <Label fx:id="txtCustomerId" alignment="CENTER" layoutX="175.0" layoutY="50.0" prefHeight="35.0" prefWidth="140.0" text="Label">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

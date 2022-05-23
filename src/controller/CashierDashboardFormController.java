@@ -25,7 +25,9 @@ public class CashierDashboardFormController {
         context.getChildren().add(parent);
     }
 
-    public void customerOnAction(ActionEvent actionEvent) {
-
+    public void customerOnAction(ActionEvent actionEvent) throws IOException {
+        context.getChildren().clear();
+        Parent parent = FXMLLoader.load(getClass().getResource("../view/customer-form.fxml"));
+        context.getChildren().add(parent);
     }
 }
