@@ -56,16 +56,15 @@ public class CustomerFormController {
         });
 
         txtCustomerAddress.setOnAction(event -> btnSave.fire());
-        loadAllCustomers();
+       // loadAllCustomers();
     }
 
     private void loadAllCustomers() {
         tblCustomers.getItems().clear();
-        /*Get all customers*/
         try {
             ArrayList<CustomerDTO> allCustomers = customerBO.getAllCustomers();
             for (CustomerDTO customer : allCustomers) {
-                tblCustomers.getItems().add(new CustomerTM(customer.getId(), customer.getName(), customer.getAddress()));
+                tblCustomers.getItems().add(new CustomerTM(customer.getCusID(), customer.getCusTitle(), customer.getCusName(),customer.getCusAddress(),customer.getCity(),customer.getProvince(),customer.getPostCode()));
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -80,6 +79,71 @@ public class CustomerFormController {
     }
 
     public void btnSave_OnAction(ActionEvent actionEvent) {
+        String id = txtCustomerId.getText();
+        String title = txtCustomerTitle.getText();
+        String name = txtCustomerName.getText();
+        String address = txtCustomerAddress.getText();
+        String city = txtCustomerCity.getText();
+        String province = txtCustomerProvince.getText();
+        String postcode = txtPostalCode.getText();
+
+
+        if (!name.matches("[A-Za-z ]+")) {
+            new Alert(Alert.AlertType.ERROR, "Invalid name").show();
+            txtCustomerName.requestFocus();
+            return;
+        } else if (!address.matches(".{3,}")) {
+            new Alert(Alert.AlertType.ERROR, "Address should be at least 3 characters long").show();
+            txtCustomerAddress.requestFocus();
+            return;
+        }
+
+        if (btnSave.getText().equalsIgnoreCase("save")) {
+
+            try {
+                if (existCustomer(id)) {
+                    new Alert(Alert.AlertType.ERROR, id + " already exists").show();
+                }
+
+                customerBO.saveCustomer(new CustomerDTO(id,title, name, address,city,province,postcode));
+                tblCustomers.getItems().add(new CustomerTM(id,title, name, address,city,province,postcode));
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to save the customer " + e.getMessage()).show();
+                e.printStackTrace();
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+
+            try {
+                if (!existCustomer(id)) {
+                    new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + id).show();
+                }
+
+                customerBO.updateCustomer(new CustomerDTO(id,title, name, address,city,province,postcode));
+
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to update the customer " + id + e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            CustomerTM selectedCustomer = tblCustomers.getSelectionModel().getSelectedItem();
+            selectedCustomer.setCusTitle(title);
+            selectedCustomer.setCusName(name);
+            selectedCustomer.setCusAddress(address);
+            selectedCustomer.setCity(city);
+            selectedCustomer.setProvince(province);
+            selectedCustomer.setProvince(postcode);
+
+            tblCustomers.refresh();
+        }
+        btnAddNewCustomer.fire();
+    }
+
+    private boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
+        return customerBO.customerExist(id);
     }
 
     public void btnDelete_OnAction(ActionEvent actionEvent) {

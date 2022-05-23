@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.CustomerDAO;
+import dao.SQLUtil;
 import entity.Customer;
 
 import java.sql.SQLException;
@@ -13,8 +14,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean save(Customer dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeUpdate("INSERT INTO Customer VALUES (?,?,?,?,?,?,?)",entity.getCusID(), entity.getCusTitle(), entity.getCusName(),entity.getCusAddress(),entity.getCity(),entity.getProvince(),entity.getPostCode());
     }
 
     @Override
@@ -28,8 +29,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean exist(String s) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeQuery("SELECT id FROM Customer WHERE id=?", id).next();
     }
 
     @Override
