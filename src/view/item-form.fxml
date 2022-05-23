@@ -10,36 +10,36 @@
 
 <AnchorPane fx:id="context" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemFormController">
    <children>
-      <JFXButton layoutX="920.0" layoutY="41.0" onAction="#logoutOnAction" style="-fx-border-color: #808080;" text="Log out" />
+      <JFXButton layoutX="920.0" layoutY="43.0" onAction="#logoutOnAction" style="-fx-border-color: #808080;" text="Log out" />
       <JFXButton id="btnAddNewCustomer" fx:id="btnAddNewItem" layoutX="776.0" layoutY="42.0" onAction="#btnAddNew_OnAction" prefHeight="28.0" prefWidth="122.0" style="-fx-cursor: hand; -fx-border-color: #808080;" text="+ New Item" />
-      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="196.0" layoutY="171.0" prefHeight="28.0" prefWidth="615.0" promptText="Item Description :">
+      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="716.0" layoutY="244.0" prefHeight="30.0" prefWidth="286.0" promptText="Item Description :">
          <font>
             <Font size="14.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="196.0" layoutY="285.0" prefHeight="28.0" prefWidth="615.0" promptText="Unit Price :">
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="715.0" layoutY="349.0" prefHeight="30.0" prefWidth="286.0" promptText="Unit Price :">
          <font>
             <Font size="14.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="195.0" layoutY="334.0" prefHeight="28.0" prefWidth="615.0" promptText="Qty. on Hand :">
+      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="715.0" layoutY="404.0" prefHeight="30.0" prefWidth="286.0" promptText="Qty. on Hand :">
          <font>
             <Font size="14.0" />
          </font></JFXTextField>
-      <JFXButton id="btnSave" fx:id="btnSave" layoutX="413.0" layoutY="393.0" onAction="#btnSave_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand; -fx-border-color: #808080;" text="Save" />
-      <JFXButton id="btnDelete" fx:id="btnDelete" layoutX="497.0" layoutY="393.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand; -fx-border-color: #808080;" text="Delete" />
-      <TableView fx:id="tblItems" layoutX="129.0" layoutY="440.0" prefHeight="285.0" prefWidth="766.0">
+      <JFXButton id="btnSave" fx:id="btnSave" layoutX="772.0" layoutY="485.0" onAction="#btnSave_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand; -fx-border-color: #808080;" text="Save" />
+      <JFXButton id="btnDelete" fx:id="btnDelete" layoutX="863.0" layoutY="485.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand; -fx-border-color: #808080;" text="Delete" />
+      <TableView fx:id="tblItems" layoutX="11.0" layoutY="188.0" prefHeight="472.0" prefWidth="684.0">
          <columns>
-            <TableColumn prefWidth="97.0" text="Code" />
-            <TableColumn prefWidth="204.0" text="Description" />
-            <TableColumn prefWidth="130.0" text="Package size" />
-            <TableColumn prefWidth="163.0" text="Qty. on Hand" />
-            <TableColumn prefWidth="163.0" text="Unit Price" />
+            <TableColumn prefWidth="108.0" text="Code" />
+            <TableColumn prefWidth="193.0" text="Description" />
+            <TableColumn prefWidth="124.0" text="Package size" />
+            <TableColumn prefWidth="132.0" text="Qty. on Hand" />
+            <TableColumn prefWidth="120.0" text="Unit Price" />
          </columns>
       </TableView>
-      <JFXTextField fx:id="txtPackageSize" labelFloat="true" layoutX="196.0" layoutY="230.0" prefHeight="28.0" prefWidth="615.0" promptText="Package size :">
+      <JFXTextField fx:id="txtPackageSize" labelFloat="true" layoutX="716.0" layoutY="301.0" prefHeight="30.0" prefWidth="286.0" promptText="Package size :">
          <font>
             <Font size="14.0" />
          </font></JFXTextField>
-      <Label fx:id="txtCode" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="82.0" prefHeight="43.0" prefWidth="179.0" style="-fx-border-color: #080808;" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+      <Label fx:id="txtCode" alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="35.0" prefHeight="43.0" prefWidth="179.0" style="-fx-border-color: #080808;" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
