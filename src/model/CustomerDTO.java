@@ -1,6 +1,6 @@
-package view.tm;
+package model;
 
-public class CustomerTM {
+public class CustomerDTO {
     String CusID;
     String CusTitle;
     String CusName;
@@ -9,10 +9,10 @@ public class CustomerTM {
     String Province;
     String PostCode;
 
-    public CustomerTM() {
+    public CustomerDTO() {
     }
 
-    public CustomerTM(String cusID, String cusTitle, String cusName, String cusAddress, String city, String province, String postCode) {
+    public CustomerDTO(String cusID, String cusTitle, String cusName, String cusAddress, String city, String province, String postCode) {
         CusID = cusID;
         CusTitle = cusTitle;
         CusName = cusName;
@@ -80,7 +80,7 @@ public class CustomerTM {
 
     @Override
     public String toString() {
-        return "CustomerTM{" +
+        return "CustomDTO{" +
                 "CusID='" + CusID + '\'' +
                 ", CusTitle='" + CusTitle + '\'' +
                 ", CusName='" + CusName + '\'' +

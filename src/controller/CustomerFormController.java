@@ -5,9 +5,15 @@ import bo.CustomerBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.CustomerDTO;
+import view.tm.CustomerTM;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CustomerFormController {
 
@@ -17,7 +23,7 @@ public class CustomerFormController {
     public JFXTextField txtCustomerAddress;
     public JFXButton btnSave;
     public JFXButton btnDelete;
-    public TableView tblCustomers;
+    public TableView<CustomerTM> tblCustomers;
     public JFXTextField txtCustomerTitle;
     public JFXTextField txtCustomerCity;
     public JFXTextField txtCustomerProvince;
@@ -25,11 +31,13 @@ public class CustomerFormController {
     public Label txtCustomerId;
 
     public void initialize() {
-        tblCustomers.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
-        tblCustomers.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
-        tblCustomers.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("address"));
-
-        initUI();
+        tblCustomers.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("CusID"));
+        tblCustomers.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("CusTitle"));
+        tblCustomers.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("CusName"));
+        tblCustomers.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("CusAddress"));
+        tblCustomers.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("City"));
+        tblCustomers.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("Province"));
+        tblCustomers.getColumns().get(6).setCellValueFactory(new PropertyValueFactory<>("PostCode"));
 
         tblCustomers.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             btnDelete.setDisable(newValue == null);
@@ -37,18 +45,33 @@ public class CustomerFormController {
             btnSave.setDisable(newValue == null);
 
             if (newValue != null) {
-                txtCustomerId.setText(newValue.getId());
-                txtCustomerName.setText(newValue.getName());
-                txtCustomerAddress.setText(newValue.getAddress());
-
-                txtCustomerId.setDisable(false);
-                txtCustomerName.setDisable(false);
-                txtCustomerAddress.setDisable(false);
+                txtCustomerId.setText(newValue.getCusID());
+                txtCustomerTitle.setText(newValue.getCusTitle());
+                txtCustomerName.setText(newValue.getCusName());
+                txtCustomerAddress.setText(newValue.getCusAddress());
+                txtCustomerCity.setText(newValue.getCity());
+                txtCustomerProvince.setText(newValue.getProvince());
+                txtPostalCode.setText(newValue.getPostCode());
             }
         });
 
         txtCustomerAddress.setOnAction(event -> btnSave.fire());
         loadAllCustomers();
+    }
+
+    private void loadAllCustomers() {
+        tblCustomers.getItems().clear();
+        /*Get all customers*/
+        try {
+            ArrayList<CustomerDTO> allCustomers = customerBO.getAllCustomers();
+            for (CustomerDTO customer : allCustomers) {
+                tblCustomers.getItems().add(new CustomerTM(customer.getId(), customer.getName(), customer.getAddress()));
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
 
