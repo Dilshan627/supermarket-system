@@ -40,6 +40,6 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public String generateNewCustomerID() throws SQLException, ClassNotFoundException {
-        return null;
+        return customerDAO.generateNewID();
     }
 }

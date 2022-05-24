@@ -11,9 +11,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.CustomerDTO;
 import view.tm.CustomerTM;
+import view.tm.ItemTM;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class CustomerFormController {
 
@@ -57,6 +61,7 @@ public class CustomerFormController {
 
         txtCustomerAddress.setOnAction(event -> btnSave.fire());
        // loadAllCustomers();
+        txtCustomerId.setText(generateNewId());
     }
 
     private void loadAllCustomers() {
@@ -148,4 +153,30 @@ public class CustomerFormController {
 
     public void btnDelete_OnAction(ActionEvent actionEvent) {
     }
+
+    private String generateNewId() {
+        try {
+            customerBO.generateNewCustomerID();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (tblCustomers.getItems().isEmpty()) {
+            return "C00-001";
+
+        } else {
+            String id = getLastItemId();
+            int newItemId = Integer.parseInt(id.replace("C00-", "")) + 1;
+            return String.format("C00-%03d", newItemId);
+        }
+    }
+
+    private String getLastItemId() {
+        ArrayList<CustomerTM> tempCustomersList = new ArrayList<>(tblCustomers.getItems());
+        Arrays.sort(new ArrayList[]{tempCustomersList});
+        return tempCustomersList.get(tempCustomersList.size() - 1).getCusID();
+    }
+
 }

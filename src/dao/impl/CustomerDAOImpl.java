@@ -4,6 +4,7 @@ import dao.CustomerDAO;
 import dao.SQLUtil;
 import entity.Customer;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeQuery("SELECT id FROM Customer WHERE id=?", id).next();
+        return SQLUtil.executeQuery("SELECT CusID FROM Customer WHERE CusID=?", id).next();
     }
 
     @Override
@@ -40,6 +41,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.executeQuery("SELECT CusID FROM Customer ORDER BY CusID DESC LIMIT 1;");
+        if (rst.next()) {
+            String id = rst.getString("CusID");
+            int newCustomerId = Integer.parseInt(id.replace("C00-", "")) + 1;
+            return String.format("C00-%03d", newCustomerId);
+        } else {
+            return "C00-001";
+        }
     }
 }
