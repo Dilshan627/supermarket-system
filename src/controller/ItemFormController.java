@@ -5,8 +5,6 @@ import bo.ItemBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
@@ -15,8 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import model.ItemDTO;
 import view.tm.ItemTM;
-
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -206,12 +202,5 @@ public class ItemFormController {
         Arrays.sort(new ArrayList[]{tempItemList});
         return tempItemList.get(tempItemList.size() - 1).getCode();
     }
-
-    public void logoutOnAction(ActionEvent actionEvent) throws IOException {
-        context.getChildren().clear();
-        Parent parent = FXMLLoader.load(getClass().getResource("../view/login-form.fxml"));
-        context.getChildren().add(parent);
-    }
-
 
 }

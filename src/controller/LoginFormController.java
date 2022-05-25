@@ -27,7 +27,7 @@ public class LoginFormController {
 
     public void AdministratorSignInOnAction(ActionEvent actionEvent) throws IOException {
         context.getChildren().clear();
-        Parent parent= FXMLLoader.load(getClass().getResource("../view/item-form.fxml"));
+        Parent parent= FXMLLoader.load(getClass().getResource("../view/administrator-form.fxml"));
         context.getChildren().add(parent);
     }
 

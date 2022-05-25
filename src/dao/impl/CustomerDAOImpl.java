@@ -11,7 +11,12 @@ import java.util.ArrayList;
 public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public ArrayList<Customer> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.executeQuery("SELECT * FROM Customer");
+        ArrayList<Customer> allCustomers = new ArrayList<>();
+        while (rst.next()) {
+            allCustomers.add(new Customer(rst.getString(1), rst.getString(2), rst.getString(3),rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7)));
+        }
+        return allCustomers;
     }
 
     @Override
@@ -20,8 +25,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean update(Customer dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeUpdate("UPDATE Customer SET CusTitle=?,CusName=?, CusAddress=? ,City=? ,Povince=? ,PostCode=? WHERE CusID=? ", entity.getCusTitle(), entity.getCusName(), entity.getCusAddress(),entity.getCity(),entity.getProvince(),entity.getPostCode(),entity.getCusID());
     }
 
     @Override

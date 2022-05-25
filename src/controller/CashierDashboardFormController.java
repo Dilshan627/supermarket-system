@@ -9,15 +9,8 @@ import java.io.IOException;
 
 public class CashierDashboardFormController {
     public AnchorPane context;
+    public AnchorPane sideContext;
 
-    public void txtQty_OnAction(ActionEvent actionEvent) {
-    }
-
-    public void btnAdd_OnAction(ActionEvent actionEvent) {
-    }
-
-    public void btnPlaceOrder_OnAction(ActionEvent actionEvent) {
-    }
 
     public void logoutOnAction(ActionEvent actionEvent) throws IOException {
         context.getChildren().clear();
@@ -26,8 +19,20 @@ public class CashierDashboardFormController {
     }
 
     public void customerOnAction(ActionEvent actionEvent) throws IOException {
-        context.getChildren().clear();
+        sideContext.getChildren().clear();
         Parent parent = FXMLLoader.load(getClass().getResource("../view/customer-form.fxml"));
+        sideContext.getChildren().add(parent);
+    }
+
+    public void placeOrderOnAction(ActionEvent actionEvent) {
+    }
+
+    public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
+        context.getChildren().clear();
+        Parent parent = FXMLLoader.load(getClass().getResource("../view/cashier-dashboard-form.fxml"));
         context.getChildren().add(parent);
+    }
+
+    public void orderHistoryOnAction(ActionEvent actionEvent) {
     }
 }
