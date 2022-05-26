@@ -1,15 +1,16 @@
-package entity;
+package model;
 
-public class OrderDetail {
+public class OrderDetailDTO {
     private String OrderID;
     private String ItemCode;
     private int Orderqty;
     private double Discount;
 
-    public OrderDetail() {
+
+    public OrderDetailDTO() {
     }
 
-    public OrderDetail(String orderID, String itemCode, int orderqty, double discount) {
+    public OrderDetailDTO(String orderID, String itemCode, int orderqty, double discount) {
         OrderID = orderID;
         ItemCode = itemCode;
         Orderqty = orderqty;
@@ -46,5 +47,15 @@ public class OrderDetail {
 
     public void setDiscount(double discount) {
         Discount = discount;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDetailDTO{" +
+                "OrderID='" + OrderID + '\'' +
+                ", ItemCode='" + ItemCode + '\'' +
+                ", Orderqty=" + Orderqty +
+                ", Discount=" + Discount +
+                '}';
     }
 }

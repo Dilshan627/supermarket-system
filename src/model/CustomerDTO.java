@@ -1,13 +1,13 @@
 package model;
 
 public class CustomerDTO {
-    String CusID;
-    String CusTitle;
-    String CusName;
-    String CusAddress;
-    String City;
-    String Province;
-    String PostCode;
+    private String CusID;
+    private String CusTitle;
+    private String CusName;
+    private String CusAddress;
+    private String City;
+    private String Province;
+    private String PostCode;
 
     public CustomerDTO() {
     }

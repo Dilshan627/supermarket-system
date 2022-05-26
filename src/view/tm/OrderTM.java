@@ -1,16 +1,16 @@
-package entity;
+package view.tm;
 
 import java.time.LocalDate;
 
-public class Orders {
+public class OrderTM {
     private String OrderID;
     private LocalDate OrderDate;
     private String CusID;
 
-    public Orders() {
+    public OrderTM() {
     }
 
-    public Orders(String orderID, LocalDate orderDate, String cusID) {
+    public OrderTM(String orderID, LocalDate orderDate, String cusID) {
         OrderID = orderID;
         OrderDate = orderDate;
         CusID = cusID;
@@ -38,5 +38,14 @@ public class Orders {
 
     public void setCusID(String cusID) {
         CusID = cusID;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderTM{" +
+                "OrderID='" + OrderID + '\'' +
+                ", OrderDate=" + OrderDate +
+                ", CusID='" + CusID + '\'' +
+                '}';
     }
 }

@@ -24,7 +24,10 @@ public class CashierDashboardFormController {
         sideContext.getChildren().add(parent);
     }
 
-    public void placeOrderOnAction(ActionEvent actionEvent) {
+    public void placeOrderOnAction(ActionEvent actionEvent) throws IOException {
+        sideContext.getChildren().clear();
+        Parent parent = FXMLLoader.load(getClass().getResource("../view/place-order-form.fxml"));
+        sideContext.getChildren().add(parent);
     }
 
     public void dashboardOnAction(ActionEvent actionEvent) throws IOException {

@@ -1,15 +1,17 @@
-package entity;
+package view.tm;
 
-public class OrderDetail {
+public class OrderDetailTM {
     private String OrderID;
     private String ItemCode;
     private int Orderqty;
     private double Discount;
 
-    public OrderDetail() {
+
+
+    public OrderDetailTM() {
     }
 
-    public OrderDetail(String orderID, String itemCode, int orderqty, double discount) {
+    public OrderDetailTM(String orderID, String itemCode, int orderqty, double discount) {
         OrderID = orderID;
         ItemCode = itemCode;
         Orderqty = orderqty;
@@ -46,5 +48,15 @@ public class OrderDetail {
 
     public void setDiscount(double discount) {
         Discount = discount;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDetailTM{" +
+                "OrderID='" + OrderID + '\'' +
+                ", ItemCode='" + ItemCode + '\'' +
+                ", Orderqty=" + Orderqty +
+                ", Discount=" + Discount +
+                '}';
     }
 }
