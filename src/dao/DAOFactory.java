@@ -1,6 +1,6 @@
 package dao;
 
-import dao.impl.*;
+import dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;

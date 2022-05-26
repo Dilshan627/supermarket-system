@@ -1,6 +1,6 @@
-package dao.impl;
+package dao.custom.impl;
 
-import dao.ItemDAO;
+import dao.custom.ItemDAO;
 import dao.SQLUtil;
 import entity.Item;
 
@@ -33,7 +33,11 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public Item search(String s) throws SQLException, ClassNotFoundException {
+    public Item search(String code) throws SQLException, ClassNotFoundException {
+        ResultSet rst = SQLUtil.executeQuery("SELECT * FROM Item WHERE ItemCode=?", code);
+        if (rst.next()) {
+            return new Item(rst.getString(1), rst.getString(2), rst.getString(3),rst.getDouble(4),rst.getInt(5));
+        }
         return null;
     }
 

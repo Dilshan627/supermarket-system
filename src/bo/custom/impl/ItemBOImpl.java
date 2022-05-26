@@ -1,8 +1,8 @@
-package bo.impl;
+package bo.custom.impl;
 
-import bo.ItemBO;
+import bo.custom.ItemBO;
 import dao.DAOFactory;
-import dao.ItemDAO;
+import dao.custom.ItemDAO;
 import entity.Item;
 import model.ItemDTO;
 

@@ -1,6 +1,6 @@
-package dao.impl;
+package dao.custom.impl;
 
-import dao.OrderDAO;
+import dao.custom.OrderDAO;
 import entity.Orders;
 
 import java.sql.SQLException;

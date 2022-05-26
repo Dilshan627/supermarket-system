@@ -1,7 +1,7 @@
-package bo.impl;
+package bo.custom.impl;
 
-import bo.CustomerBO;
-import dao.CustomerDAO;
+import bo.custom.CustomerBO;
+import dao.custom.CustomerDAO;
 import dao.DAOFactory;
 import entity.Customer;
 import model.CustomerDTO;

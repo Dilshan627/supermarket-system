@@ -1,6 +1,6 @@
-package dao.impl;
+package dao.custom.impl;
 
-import dao.CustomerDAO;
+import dao.custom.CustomerDAO;
 import dao.SQLUtil;
 import entity.Customer;
 
@@ -30,7 +30,11 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public Customer search(String s) throws SQLException, ClassNotFoundException {
+    public Customer search(String id) throws SQLException, ClassNotFoundException {
+        ResultSet rst = SQLUtil.executeQuery("SELECT * FROM Customer WHERE CusID=?", id);
+        if (rst.next()) {
+            return new Customer(rst.getString(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6),rst.getString(7));
+        }
         return null;
     }
 

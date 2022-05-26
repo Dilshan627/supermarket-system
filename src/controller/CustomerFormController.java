@@ -1,7 +1,7 @@
 package controller;
 
 import bo.BOFactory;
-import bo.CustomerBO;
+import bo.custom.CustomerBO;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -11,13 +11,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.CustomerDTO;
 import view.tm.CustomerTM;
-import view.tm.ItemTM;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class CustomerFormController {
 

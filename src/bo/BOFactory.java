@@ -1,8 +1,8 @@
 package bo;
 
-import bo.impl.CustomerBOImpl;
-import bo.impl.ItemBOImpl;
-import bo.impl.PurchaseOrderBOImpl;
+import bo.custom.impl.CustomerBOImpl;
+import bo.custom.impl.ItemBOImpl;
+import bo.custom.impl.PurchaseOrderBOImpl;
 
 public class BOFactory {
     private static BOFactory boFactory;
