@@ -18,6 +18,7 @@ import view.tm.OrderDetailTM;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class PlaceOrderFormController {
     PurchaseOrderBO purchaseOrderBO = (PurchaseOrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PURCHASE_ORDER);
@@ -73,6 +74,32 @@ public class PlaceOrderFormController {
                 txtCustomerName.clear();
             }
         });
+
+        cmbItemCode.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newItemCode) -> {
+            if (newItemCode != null) {
+
+                try {
+                    if (!existItem(newItemCode + "")) {
+                    }
+                    ItemDTO item = purchaseOrderBO.searchItem(newItemCode + "");
+                    txtDescription.setText(item.getDescription());
+                    txtUnitPrice.setText(String.valueOf(item.getUnitPrice()));
+                    Optional<OrderDetailTM> optOrderDetail = tblOrderDetails.getItems().stream().filter(detail -> detail.getOrderID().equals(newItemCode)).findFirst();
+                    txtQtyOnHand.setText((optOrderDetail.isPresent() ? item.getQtyOnHand() - optOrderDetail.get().getOrderqty() : item.getQtyOnHand()) + "");
+
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                txtDescription.clear();
+                txtQty.clear();
+                txtQtyOnHand.clear();
+                txtUnitPrice.clear();
+            }
+        });
+
 
         loadAllCustomerIds();
         loadAllItemCodes();
