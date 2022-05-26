@@ -1,8 +1,10 @@
 package dao.custom.impl;
 
+import dao.SQLUtil;
 import dao.custom.OrderDAO;
 import entity.Orders;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -28,8 +30,8 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public boolean exist(String s) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean exist(String oid) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeQuery("SELECT OrderID FROM `Order` WHERE OrderID=?", oid).next();
     }
 
     @Override
@@ -39,6 +41,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.executeQuery("SELECT OrderID FROM `Order` ORDER BY OrderID DESC LIMIT 1;");
+        return rst.next() ? String.format("OID-%03d", (Integer.parseInt(rst.getString("OrderID").replace("OID-", "")) + 1)) : "OID-001";
     }
 }

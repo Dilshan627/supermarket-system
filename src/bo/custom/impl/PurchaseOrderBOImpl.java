@@ -42,17 +42,17 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
 
     @Override
     public boolean checkItemIsAvailable(String code) throws SQLException, ClassNotFoundException {
-        return false;
+        return itemDAO.exist(code);
     }
 
     @Override
     public boolean checkCustomerIsAvailable(String id) throws SQLException, ClassNotFoundException {
-        return false;
+        return customerDAO.exist(id);
     }
 
     @Override
     public String generateNewOrderID() throws SQLException, ClassNotFoundException {
-        return null;
+        return orderDAO.generateNewID();
     }
 
     @Override

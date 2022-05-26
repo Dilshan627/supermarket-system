@@ -17,6 +17,7 @@ import view.tm.OrderDetailTM;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -47,11 +48,8 @@ public class PlaceOrderFormController {
 
 
         cmbCustomerId.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-          //  enableOrDisablePlaceOrderButton();
-
             if (newValue != null) {
                 try {
-                    /*Search Customer*/
                     Connection connection = DBConnection.getDbConnection().getConnection();
                     try {
                         if (!existCustomer(newValue + "")) {
@@ -100,9 +98,10 @@ public class PlaceOrderFormController {
             }
         });
 
-
         loadAllCustomerIds();
         loadAllItemCodes();
+        lblId.setText(generateNewOrderId());
+        lblDate.setText(LocalDate.now().toString());
     }
 
     private void loadAllCustomerIds() {
@@ -144,8 +143,21 @@ public class PlaceOrderFormController {
     }
 
     public void btnAdd_OnAction(ActionEvent actionEvent) {
+
     }
 
     public void btnDelete_OnAction(ActionEvent actionEvent) {
     }
+
+    public String generateNewOrderId() {
+        try {
+            return purchaseOrderBO.generateNewOrderID();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to generate a new order id").show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "OID-001";
+    }
+
 }
