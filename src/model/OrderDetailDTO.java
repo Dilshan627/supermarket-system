@@ -5,16 +5,17 @@ public class OrderDetailDTO {
     private String ItemCode;
     private int Orderqty;
     private double Discount;
-
+    private double Price;
 
     public OrderDetailDTO() {
     }
 
-    public OrderDetailDTO(String orderID, String itemCode, int orderqty, double discount) {
+    public OrderDetailDTO(String orderID, String itemCode, int orderqty, double discount, double price) {
         OrderID = orderID;
         ItemCode = itemCode;
         Orderqty = orderqty;
         Discount = discount;
+        Price = price;
     }
 
     public String getOrderID() {
@@ -49,6 +50,14 @@ public class OrderDetailDTO {
         Discount = discount;
     }
 
+    public double getPrice() {
+        return Price;
+    }
+
+    public void setPrice(double price) {
+        Price = price;
+    }
+
     @Override
     public String toString() {
         return "OrderDetailDTO{" +
@@ -56,6 +65,7 @@ public class OrderDetailDTO {
                 ", ItemCode='" + ItemCode + '\'' +
                 ", Orderqty=" + Orderqty +
                 ", Discount=" + Discount +
+                ", Price=" + Price +
                 '}';
     }
 }

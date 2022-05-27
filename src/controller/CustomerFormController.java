@@ -23,7 +23,6 @@ public class CustomerFormController {
     public JFXTextField txtCustomerName;
     public JFXTextField txtCustomerAddress;
     public JFXButton btnSave;
-    public JFXButton btnDelete;
     public TableView<CustomerTM> tblCustomers;
     public JFXTextField txtCustomerTitle;
     public JFXTextField txtCustomerCity;
@@ -41,7 +40,6 @@ public class CustomerFormController {
         tblCustomers.getColumns().get(6).setCellValueFactory(new PropertyValueFactory<>("PostCode"));
 
         tblCustomers.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            btnDelete.setDisable(newValue == null);
             btnSave.setText(newValue != null ? "Update" : "Save");
             btnSave.setDisable(newValue == null);
 
@@ -159,9 +157,6 @@ public class CustomerFormController {
 
     private boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
         return customerBO.customerExist(id);
-    }
-
-    public void btnDelete_OnAction(ActionEvent actionEvent) {
     }
 
     private String generateNewId() {

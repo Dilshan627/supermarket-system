@@ -18,7 +18,7 @@
       <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="134.0" layoutY="249.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty. on Hand" />
       <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="310.0" layoutY="250.0" prefHeight="28.0" prefWidth="161.0" promptText="Unit Price" />
       <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="485.0" layoutY="250.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty." />
-      <JFXButton id="btnSave" fx:id="btnSave" layoutX="484.0" layoutY="316.0" onAction="#btnAdd_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Add" />
+      <JFXButton id="btnSave" fx:id="btnSave" layoutX="484.0" layoutY="316.0" onAction="#btnAdd_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand; -fx-border-color: #080808;" text="Add" />
       <TableView fx:id="tblOrderDetails" layoutX="108.0" layoutY="377.0" prefHeight="205.0" prefWidth="687.0">
          <columns>
             <TableColumn prefWidth="92.0" text="Code" />
@@ -29,12 +29,12 @@
             <TableColumn prefWidth="128.0" text="Total" />
          </columns>
       </TableView>
-      <Label fx:id="lblId" alignment="CENTER_RIGHT" layoutX="684.0" layoutY="30.0" prefHeight="24.0" prefWidth="152.0" text="ORDER ID : OD001">
+      <Label fx:id="lblId" alignment="CENTER_RIGHT" layoutX="286.0" layoutY="30.0" prefHeight="24.0" prefWidth="152.0" text="ORDER ID : OD001">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" alignment="CENTER_RIGHT" layoutX="682.0" layoutY="55.0" prefHeight="24.0" prefWidth="152.0" text="2021-10-11">
+      <Label fx:id="lblDate" alignment="CENTER_RIGHT" layoutX="447.0" layoutY="30.0" prefHeight="24.0" prefWidth="152.0" text="2021-10-11">
          <font>
             <Font size="17.0" />
          </font>
@@ -46,6 +46,6 @@
       </Label>
       <JFXButton id="btnSave" fx:id="btnPlaceOrder" layoutX="745.0" layoutY="646.0" onAction="#btnPlaceOrder_OnAction" prefHeight="35.0" prefWidth="101.0" style="-fx-cursor: hand; -fx-background-color: orange; -fx-text-fill: black;" text="Place Order" />
       <JFXTextField fx:id="txtDiscount" labelFloat="true" layoutX="664.0" layoutY="250.0" prefHeight="28.0" prefWidth="86.0" promptText="Discount" />
-      <JFXButton id="btnSave" fx:id="btnDelete" layoutX="597.0" layoutY="316.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand;" text="Delete" />
+      <JFXButton id="btnSave" fx:id="btnDelete" layoutX="597.0" layoutY="316.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand; -fx-border-color: #080808;" text="Delete" />
    </children>
 </AnchorPane>

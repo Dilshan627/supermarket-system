@@ -5,15 +5,17 @@ public class OrderDetail {
     private String ItemCode;
     private int Orderqty;
     private double Discount;
+    private double Price;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(String orderID, String itemCode, int orderqty, double discount) {
+    public OrderDetail(String orderID, String itemCode, int orderqty, double discount, double price) {
         OrderID = orderID;
         ItemCode = itemCode;
         Orderqty = orderqty;
         Discount = discount;
+        Price = price;
     }
 
     public String getOrderID() {
@@ -46,5 +48,13 @@ public class OrderDetail {
 
     public void setDiscount(double discount) {
         Discount = discount;
+    }
+
+    public double getPrice() {
+        return Price;
+    }
+
+    public void setPrice(double price) {
+        Price = price;
     }
 }
