@@ -1,11 +1,14 @@
 package model;
 
+import java.util.List;
+
 public class OrderDetailDTO {
     private String OrderID;
     private String ItemCode;
     private int Orderqty;
     private double Discount;
     private double Price;
+
 
     public OrderDetailDTO() {
     }
@@ -68,4 +71,5 @@ public class OrderDetailDTO {
                 ", Price=" + Price +
                 '}';
     }
+
 }

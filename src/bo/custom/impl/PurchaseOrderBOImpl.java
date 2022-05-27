@@ -7,12 +7,18 @@ import dao.custom.CustomerDAO;
 import dao.custom.ItemDAO;
 import dao.custom.OrderDAO;
 import dao.custom.OrderDetailsDAO;
+import db.DBConnection;
 import entity.Customer;
 import entity.Item;
+import entity.OrderDetail;
+import entity.Orders;
+import javafx.scene.control.Alert;
 import model.CustomerDTO;
 import model.ItemDTO;
 import model.OrderDTO;
+import model.OrderDetailDTO;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -24,8 +30,42 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
     private final QueryDAO queryDAO = (QueryDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.QUERYDAO);
 
     @Override
-    public boolean purchaseOrder(OrderDTO dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean purchaseOrder(OrderDTO order, ArrayList<OrderDetailDTO> details) throws SQLException, ClassNotFoundException {
+        Connection connection = null;
+
+        connection = DBConnection.getDbConnection().getConnection();
+        connection.setAutoCommit(false);
+
+        Orders orders=new Orders(order.getOrderID(),order.getOrderDate(),order.getCusID());
+
+        boolean isOrderSaved = orderDAO.save(orders);
+
+        if (isOrderSaved) {
+
+
+            boolean isDetailsSaved = false;
+            for (OrderDetailDTO detail : details) {
+
+                OrderDetail orderDetail=new OrderDetail(detail.getOrderID(),detail.getItemCode(),detail.getOrderqty(),detail.getDiscount(),detail.getPrice());
+
+                isDetailsSaved = orderDetailsDAO.save(orderDetail);
+
+                //**  quantity update *//*
+                updateQty(detail.getItemCode(), detail.getOrderqty());
+            }
+
+            if (isDetailsSaved) {
+                connection.commit();
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully...!").showAndWait();
+            } else {
+                connection.rollback();
+                new Alert(Alert.AlertType.ERROR, "Error...!").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error...!").show();
+        }
+        connection.setAutoCommit(true);
+        return true;
     }
 
     @Override
@@ -74,5 +114,11 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
             allItems.add(new ItemDTO(ent.getCode(), ent.getDescription(),ent.getPackageSize(),ent.getUnitPrice(),ent.getQtyOnHand()));
         }
         return allItems;
+    }
+
+    @Override
+    public boolean updateQty(String itemCode, int qty) throws SQLException, ClassNotFoundException {
+        return itemDAO.updateQty(itemCode, qty);
+
     }
 }

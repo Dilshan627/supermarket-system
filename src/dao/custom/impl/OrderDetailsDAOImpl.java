@@ -1,5 +1,6 @@
 package dao.custom.impl;
 
+import dao.SQLUtil;
 import dao.custom.OrderDetailsDAO;
 import entity.OrderDetail;
 
@@ -13,12 +14,14 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     }
 
     @Override
-    public boolean save(OrderDetail dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean save(OrderDetail entity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeUpdate("INSERT INTO `Order Details` VALUES(?,?,?,?,?)",
+                entity.getOrderID(), entity.getItemCode(), entity.getOrderqty(), entity.getDiscount(), entity.getPrice());
+
     }
 
     @Override
-    public boolean update(OrderDetail dto) throws SQLException, ClassNotFoundException {
+    public boolean update(OrderDetail entity) throws SQLException, ClassNotFoundException {
         return false;
     }
 

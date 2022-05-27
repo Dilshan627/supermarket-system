@@ -1,11 +1,13 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class OrderDTO {
     private String OrderID;
     private LocalDate OrderDate;
     private String CusID;
+
 
     public OrderDTO() {
     }

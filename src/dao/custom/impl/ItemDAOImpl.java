@@ -64,4 +64,9 @@ public class ItemDAOImpl implements ItemDAO {
             return "I00-001";
         }
     }
+
+    @Override
+    public boolean updateQty(String itemCode, int qty) throws SQLException, ClassNotFoundException {
+        return false;
+    }
 }

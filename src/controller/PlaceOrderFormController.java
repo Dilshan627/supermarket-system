@@ -15,6 +15,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.CustomerDTO;
 import model.ItemDTO;
+import model.OrderDTO;
+import model.OrderDetailDTO;
 import view.tm.CartTM;
 import view.tm.OrderDetailTM;
 
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class PlaceOrderFormController {
-    public JFXComboBox cmbCustomerId;
+    public JFXComboBox<String> cmbCustomerId;
     public JFXTextField txtCustomerName;
     public JFXComboBox<String> cmbItemCode;
     public JFXTextField txtDescription;
@@ -151,6 +153,33 @@ public class PlaceOrderFormController {
     }
 
     public void btnPlaceOrder_OnAction(ActionEvent actionEvent) {
+
+
+        String s = lblId.getText();
+        OrderDTO order = new OrderDTO(s, LocalDate.now(), cmbCustomerId.getValue());
+
+        ArrayList<OrderDetailDTO> details = new ArrayList<>();
+        for (CartTM tm : list) {
+            details.add(new OrderDetailDTO(s, tm.getItemCode(), tm.getQTY(), tm.getDiscount(), tm.getTotal()));
+        }
+
+        try {
+            purchaseOrderBO.purchaseOrder(order, details);
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        generateNewOrderId();
+        lblTotal.setText("0.00 /=");
+        cmbCustomerId.getSelectionModel().clearSelection();
+        cmbItemCode.getSelectionModel().clearSelection();
+        tblOrderDetails.getItems().clear();
+        txtQty.clear();
+        txtCustomerName.clear();
+        txtDescription.clear();
+        txtQtyOnHand.clear();
+        txtDiscount.clear();
+        txtUnitPrice.clear();
     }
 
     public void btnAdd_OnAction(ActionEvent actionEvent) {

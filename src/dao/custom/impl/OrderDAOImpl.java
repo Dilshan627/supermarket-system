@@ -3,6 +3,7 @@ package dao.custom.impl;
 import dao.SQLUtil;
 import dao.custom.OrderDAO;
 import entity.Orders;
+import model.OrderDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,12 +16,13 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public boolean save(Orders dto) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean save(Orders entity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeUpdate("INSERT INTO `Order` values(?,?,?)", entity.getOrderID(),
+                entity.getOrderDate(), entity.getCusID());
     }
 
     @Override
-    public boolean update(Orders dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Orders entity) throws SQLException, ClassNotFoundException {
         return false;
     }
 
