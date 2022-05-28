@@ -36,7 +36,7 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
         connection = DBConnection.getDbConnection().getConnection();
         connection.setAutoCommit(false);
 
-        Orders orders=new Orders(order.getOrderID(),order.getOrderDate(),order.getCusID());
+        Orders orders=new Orders(order.getOrderID(),order.getCusID(),order.getOrderDate(),order.getTotal());
 
         boolean isOrderSaved = orderDAO.save(orders);
 

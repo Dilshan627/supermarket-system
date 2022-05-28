@@ -59,4 +59,12 @@ public class CustomerDAOImpl implements CustomerDAO {
             return "C00-001";
         }
     }
+
+    @Override
+    public String customerCount() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT count(CusID) FROM customer");
+        resultSet.next();
+        String count=resultSet.getString(1);
+        return count;
+    }
 }

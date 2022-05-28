@@ -42,7 +42,10 @@ public class PlaceOrderFormController {
     public JFXButton btnPlaceOrder;
     public JFXTextField txtDiscount;
     public JFXButton btnDelete;
+    double t1=0;
+
     PurchaseOrderBO purchaseOrderBO = (PurchaseOrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PURCHASE_ORDER);
+
     int cartSelectedRowCountForDelete = -1;
     ObservableList<CartTM> list = FXCollections.observableArrayList();
 
@@ -154,22 +157,20 @@ public class PlaceOrderFormController {
 
     public void btnPlaceOrder_OnAction(ActionEvent actionEvent) {
 
-
         String s = lblId.getText();
-        OrderDTO order = new OrderDTO(s, LocalDate.now(), cmbCustomerId.getValue());
+        OrderDTO order = new OrderDTO(s, cmbCustomerId.getValue() ,LocalDate.now(),t1);
 
         ArrayList<OrderDetailDTO> details = new ArrayList<>();
         for (CartTM tm : list) {
             details.add(new OrderDetailDTO(s, tm.getItemCode(), tm.getQTY(), tm.getDiscount(), tm.getTotal()));
         }
-
         try {
             purchaseOrderBO.purchaseOrder(order, details);
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        generateNewOrderId();
+        lblId.setText(generateNewOrderId());
         lblTotal.setText("0.00 /=");
         cmbCustomerId.getSelectionModel().clearSelection();
         cmbItemCode.getSelectionModel().clearSelection();
@@ -269,6 +270,7 @@ public class PlaceOrderFormController {
         for (CartTM tm : list) {
             total += tm.getTotal();
         }
+        t1=total;
         lblTotal.setText(total + " /=");
     }
 

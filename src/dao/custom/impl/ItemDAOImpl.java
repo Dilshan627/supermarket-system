@@ -67,6 +67,14 @@ public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public boolean updateQty(String itemCode, int qty) throws SQLException, ClassNotFoundException {
-        return false;
+        return  SQLUtil.executeUpdate("UPDATE Item SET QtyOnHand = QtyOnHand -? WHERE ItemCode=?", qty, itemCode);
+    }
+
+    @Override
+    public String ItemCount() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT count(ItemCode) FROM Item");
+        resultSet.next();
+        String count=resultSet.getString(1);
+        return count;
     }
 }

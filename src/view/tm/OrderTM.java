@@ -4,16 +4,18 @@ import java.time.LocalDate;
 
 public class OrderTM {
     private String OrderID;
-    private LocalDate OrderDate;
     private String CusID;
+    private LocalDate OrderDate;
+    private double Total;
 
     public OrderTM() {
     }
 
-    public OrderTM(String orderID, LocalDate orderDate, String cusID) {
+    public OrderTM(String orderID, String cusID, LocalDate orderDate, double total) {
         OrderID = orderID;
-        OrderDate = orderDate;
         CusID = cusID;
+        OrderDate = orderDate;
+        Total = total;
     }
 
     public String getOrderID() {
@@ -24,14 +26,6 @@ public class OrderTM {
         OrderID = orderID;
     }
 
-    public LocalDate getOrderDate() {
-        return OrderDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        OrderDate = orderDate;
-    }
-
     public String getCusID() {
         return CusID;
     }
@@ -40,12 +34,29 @@ public class OrderTM {
         CusID = cusID;
     }
 
+    public LocalDate getOrderDate() {
+        return OrderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        OrderDate = orderDate;
+    }
+
+    public double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(double total) {
+        Total = total;
+    }
+
     @Override
     public String toString() {
         return "OrderTM{" +
                 "OrderID='" + OrderID + '\'' +
-                ", OrderDate=" + OrderDate +
                 ", CusID='" + CusID + '\'' +
+                ", OrderDate=" + OrderDate +
+                ", Total=" + Total +
                 '}';
     }
 }

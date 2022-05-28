@@ -1,21 +1,22 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.List;
+
 
 public class OrderDTO {
     private String OrderID;
-    private LocalDate OrderDate;
     private String CusID;
-
+    private LocalDate OrderDate;
+    private double Total;
 
     public OrderDTO() {
     }
 
-    public OrderDTO(String orderID, LocalDate orderDate, String cusID) {
+    public OrderDTO(String orderID, String cusID, LocalDate orderDate, double total) {
         OrderID = orderID;
-        OrderDate = orderDate;
         CusID = cusID;
+        OrderDate = orderDate;
+        Total = total;
     }
 
     public String getOrderID() {
@@ -26,14 +27,6 @@ public class OrderDTO {
         OrderID = orderID;
     }
 
-    public LocalDate getOrderDate() {
-        return OrderDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        OrderDate = orderDate;
-    }
-
     public String getCusID() {
         return CusID;
     }
@@ -42,12 +35,29 @@ public class OrderDTO {
         CusID = cusID;
     }
 
+    public LocalDate getOrderDate() {
+        return OrderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        OrderDate = orderDate;
+    }
+
+    public double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(double total) {
+        Total = total;
+    }
+
     @Override
     public String toString() {
         return "OrderDTO{" +
                 "OrderID='" + OrderID + '\'' +
-                ", OrderDate=" + OrderDate +
                 ", CusID='" + CusID + '\'' +
+                ", OrderDate=" + OrderDate +
+                ", Total=" + Total +
                 '}';
     }
 }

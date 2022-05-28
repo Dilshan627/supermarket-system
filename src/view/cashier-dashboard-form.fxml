@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="context" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CashierDashboardFormController">
    <children>
@@ -10,7 +11,40 @@
       <Label layoutY="10.0" prefHeight="758.0" prefWidth="152.0" style="-fx-background-color: #CECECE;" />
       <JFXButton layoutX="951.0" layoutY="10.0" onAction="#logoutOnAction" style="-fx-border-color: #808080;" text="Log out" />
       <JFXButton layoutX="8.0" layoutY="236.0" onAction="#customerOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Add new Customer" />
-      <AnchorPane fx:id="sideContext" layoutX="152.0" layoutY="51.0" prefHeight="717.0" prefWidth="872.0" />
+      <AnchorPane fx:id="sideContext" layoutX="152.0" layoutY="51.0" prefHeight="717.0" prefWidth="872.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="66.0" layoutY="162.0" prefHeight="393.0" prefWidth="740.0" style="-fx-background-radius: 1em; -fx-background-color: #E5E4E2;" />
+            <Label fx:id="lblCustomer" alignment="CENTER" layoutX="108.0" layoutY="241.0" prefHeight="148.0" prefWidth="194.0" style="-fx-background-color: #ffffff; -fx-background-radius: 1em;">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblItem" alignment="CENTER" layoutX="348.0" layoutY="241.0" prefHeight="148.0" prefWidth="194.0" style="-fx-background-color: #ffffff; -fx-background-radius: 1em;">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblOrder" alignment="CENTER" layoutX="574.0" layoutY="241.0" prefHeight="148.0" prefWidth="194.0" style="-fx-background-color: #ffffff; -fx-background-radius: 1em;">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="173.0" layoutY="405.0" text="Customer">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="421.0" layoutY="405.0" text="Item">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="656.0" layoutY="405.0" text="Order">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
       <JFXButton layoutX="8.0" layoutY="206.0" onAction="#dashboardOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Dashboard" />
       <JFXButton layoutX="8.0" layoutY="266.0" onAction="#placeOrderOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="place oder" />
       <JFXButton layoutX="8.0" layoutY="296.0" onAction="#orderHistoryOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="order history " />

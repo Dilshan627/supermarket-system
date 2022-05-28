@@ -12,20 +12,14 @@ public class AdministratorFormController {
     public AnchorPane context;
 
     public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
-        context.getChildren().clear();
-        Parent parent = FXMLLoader.load(getClass().getResource("../view/administrator-form.fxml"));
-        context.getChildren().add(parent);
+        util.navigation.navigate(context,"administrator");
     }
 
     public void logoutOnAction(ActionEvent actionEvent) throws IOException {
-        context.getChildren().clear();
-        Parent parent = FXMLLoader.load(getClass().getResource("../view/login-form.fxml"));
-        context.getChildren().add(parent);
+        util.navigation.navigate(context,"login");
     }
 
     public void itemOnAction(ActionEvent actionEvent) throws IOException {
-        sideContext.getChildren().clear();
-        Parent parent = FXMLLoader.load(getClass().getResource("../view/item-form.fxml"));
-        sideContext.getChildren().add(parent);
+        util.navigation.navigate(sideContext,"item");
     }
 }

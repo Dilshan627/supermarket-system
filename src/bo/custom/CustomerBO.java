@@ -18,4 +18,6 @@ public interface CustomerBO extends SuperBO {
     boolean deleteCustomer(String id) throws SQLException, ClassNotFoundException;
 
     String generateNewCustomerID() throws SQLException, ClassNotFoundException;
+
+    String customerCount() throws SQLException,ClassNotFoundException;
 }

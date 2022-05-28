@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="717.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderHistoryFormController">
+   <children>
+      <TableView fx:id="tblOrder" layoutX="81.0" layoutY="181.0" prefHeight="419.0" prefWidth="707.0">
+        <columns>
+          <TableColumn prefWidth="185.0" text="Order ID" />
+          <TableColumn prefWidth="183.0" text="Customer" />
+            <TableColumn prefWidth="169.0" text="OrderDate" />
+            <TableColumn prefWidth="167.0" text="Total" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

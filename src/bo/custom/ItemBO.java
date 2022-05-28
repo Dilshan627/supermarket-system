@@ -18,4 +18,6 @@ public interface ItemBO extends SuperBO {
     boolean itemExist(String code) throws SQLException, ClassNotFoundException;
 
     String generateNewItemCode() throws SQLException, ClassNotFoundException;
+
+    String itemCount() throws SQLException, ClassNotFoundException;
 }

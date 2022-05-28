@@ -3,7 +3,6 @@ package dao.custom.impl;
 import dao.SQLUtil;
 import dao.custom.OrderDAO;
 import entity.Orders;
-import model.OrderDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,13 +11,18 @@ import java.util.ArrayList;
 public class OrderDAOImpl implements OrderDAO {
     @Override
     public ArrayList<Orders> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        ResultSet rst = SQLUtil.executeQuery("SELECT * FROM `Order`");
+        ArrayList<Orders> allOrder = new ArrayList<>();
+        while (rst.next()) {
+            allOrder.add(new Orders(rst.getString(1), rst.getString(2), rst.getString(3), rst.getDouble(4)));
+        }
+        return allOrder;
     }
 
     @Override
     public boolean save(Orders entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeUpdate("INSERT INTO `Order` values(?,?,?)", entity.getOrderID(),
-                entity.getOrderDate(), entity.getCusID());
+        return SQLUtil.executeUpdate("INSERT INTO `Order` values(?,?,?,?)", entity.getOrderID(), entity.getCusID(),
+                entity.getOrderDate(), entity.getTotal());
     }
 
     @Override
@@ -45,5 +49,13 @@ public class OrderDAOImpl implements OrderDAO {
     public String generateNewID() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.executeQuery("SELECT OrderID FROM `Order` ORDER BY OrderID DESC LIMIT 1;");
         return rst.next() ? String.format("OID-%03d", (Integer.parseInt(rst.getString("OrderID").replace("OID-", "")) + 1)) : "OID-001";
+    }
+
+    @Override
+    public String orderCount() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT count(OrderID) FROM `Order`");
+        resultSet.next();
+        String count=resultSet.getString(1);
+        return count;
     }
 }
