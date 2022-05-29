@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class OrderDetailsBOImpl implements OrderDetailsBO {
 
-    OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
+    private final OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
 
     @Override
     public ArrayList<OrderDTO> getAllOrder() throws SQLException, ClassNotFoundException {

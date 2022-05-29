@@ -55,7 +55,7 @@ public class OrderDAOImpl implements OrderDAO {
     public String orderCount() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.executeQuery("SELECT count(OrderID) FROM `Order`");
         resultSet.next();
-        String count=resultSet.getString(1);
+        String count = resultSet.getString(1);
         return count;
     }
 }

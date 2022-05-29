@@ -2,7 +2,7 @@ package bo.custom.impl;
 
 import bo.custom.PurchaseOrderBO;
 import dao.DAOFactory;
-import dao.QueryDAO;
+import dao.custom.QueryDAO;
 import dao.custom.CustomerDAO;
 import dao.custom.ItemDAO;
 import dao.custom.OrderDAO;
