@@ -1,9 +1,9 @@
 package controller;
 
 import bo.BOFactory;
+import bo.custom.CashierBO;
 import bo.custom.CustomerBO;
 import bo.custom.ItemBO;
-import bo.custom.OrderDetailsBO;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class CashierDashboardFormController {
     private final CustomerBO customerBO = (CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
     private final ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
-    private final OrderDetailsBO orderDetailsBO = (OrderDetailsBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.Order_Details);
+    private final CashierBO cashierBO = (CashierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.Cashier);
     public AnchorPane context;
     public AnchorPane sideContext;
     public Label lblCustomer;
@@ -25,7 +25,7 @@ public class CashierDashboardFormController {
         try {
             lblCustomer.setText(customerBO.customerCount());
             lblItem.setText(itemBO.itemCount());
-            lblOrder.setText(orderDetailsBO.orderCount());
+            lblOrder.setText(cashierBO.orderCount());
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

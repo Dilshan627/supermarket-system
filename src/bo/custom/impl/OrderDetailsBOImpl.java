@@ -23,8 +23,4 @@ public class OrderDetailsBOImpl implements OrderDetailsBO {
         return allOrder;
     }
 
-    @Override
-    public String orderCount() throws SQLException, ClassNotFoundException {
-        return orderDAO.orderCount();
-    }
 }

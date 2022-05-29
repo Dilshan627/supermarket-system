@@ -10,5 +10,4 @@ public interface OrderDetailsBO extends SuperBO {
 
     ArrayList<OrderDTO> getAllOrder() throws SQLException, ClassNotFoundException;
 
-    String orderCount() throws SQLException, ClassNotFoundException;
 }
