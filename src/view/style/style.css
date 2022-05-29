@@ -3,3 +3,8 @@
     -fx-border-color: #5CACDF;
     -fx-background-color: #5CACDF;
 }
+
+
+.default-color0.chart-bar{
+    -fx-bar-fill: #FFEBCD
+}

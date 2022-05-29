@@ -4,7 +4,6 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -15,8 +14,7 @@
       <JFXButton layoutX="951.0" layoutY="10.0" onAction="#logoutOnAction" style="-fx-border-color: #808080;" text="Log out" />
       <AnchorPane fx:id="sideContext" layoutX="152.0" layoutY="51.0" prefHeight="717.0" prefWidth="872.0">
          <children>
-            <PieChart fx:id="picChart" layoutX="186.0" layoutY="136.0" />
-            <BarChart fx:id="barChart" layoutX="179.0" layoutY="150.0">
+            <BarChart fx:id="barChart" layoutX="52.0" layoutY="168.0" prefHeight="404.0" prefWidth="774.0" stylesheets="@style/style.css">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
