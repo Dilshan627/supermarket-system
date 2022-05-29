@@ -27,13 +27,15 @@ public class BOFactory {
                 return new OrderDetailsBOImpl();
             case  Administrator:
                 return new AdministratorBOImpl();
+            case  Income:
+                return new IncomeBOImpl();
             default:
                 return null;
         }
     }
 
     public enum BOTypes {
-        CUSTOMER, ITEM, PURCHASE_ORDER, Order_Details, Administrator
+        CUSTOMER, ITEM, PURCHASE_ORDER, Order_Details, Administrator,Income
     }
 
 }
