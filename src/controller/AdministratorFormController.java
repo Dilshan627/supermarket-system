@@ -50,4 +50,8 @@ public class AdministratorFormController {
     public void itemOnAction(ActionEvent actionEvent) throws IOException {
         util.navigation.navigate(sideContext, "item");
     }
+
+    public void inComeOnAction(ActionEvent actionEvent) throws IOException {
+        util.navigation.navigate(sideContext, "income");
+    }
 }

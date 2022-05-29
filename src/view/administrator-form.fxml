@@ -25,5 +25,6 @@
          </children></AnchorPane>
       <JFXButton layoutX="9.0" layoutY="246.0" onAction="#itemOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Add new Item" />
       <JFXButton layoutX="9.0" layoutY="216.0" onAction="#dashboardOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Dashboard" />
+      <JFXButton layoutX="9.0" layoutY="276.0" onAction="#inComeOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Income" />
    </children>
 </AnchorPane>
