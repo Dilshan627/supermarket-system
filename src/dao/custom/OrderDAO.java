@@ -15,4 +15,6 @@ public interface OrderDAO  extends CrudDAO<Orders,String> {
 
     String yearIncome() throws SQLException, ClassNotFoundException;
 
+    String pay() throws SQLException, ClassNotFoundException;
+
 }

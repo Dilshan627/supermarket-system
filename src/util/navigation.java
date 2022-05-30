@@ -2,7 +2,9 @@ package util;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -12,4 +14,10 @@ public class navigation {
         Parent parent = FXMLLoader.load(navigation.class.getResource("../view/" + location + "-form.fxml"));
         anchorPane.getChildren().add(parent);
     }
+    public static void popup(String loction) throws IOException {
+        Stage stage = new Stage();
+        stage.setScene(new Scene(FXMLLoader.load(navigation.class.getResource("../view/"+loction+".fxml"))));
+        stage.show();
+    }
+
 }

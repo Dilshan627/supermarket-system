@@ -20,6 +20,8 @@ import model.OrderDetailDTO;
 import view.tm.CartTM;
 import view.tm.OrderDetailTM;
 
+import javax.rmi.CORBA.Util;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -167,8 +169,9 @@ public class PlaceOrderFormController {
         }
         try {
             purchaseOrderBO.purchaseOrder(order, details);
+            util.navigation.popup("order-pay-form");
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         lblId.setText(generateNewOrderId());
@@ -291,5 +294,6 @@ public class PlaceOrderFormController {
         }
         return "OID-001";
     }
+
 
 }

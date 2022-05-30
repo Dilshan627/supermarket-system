@@ -79,4 +79,13 @@ public class OrderDAOImpl implements OrderDAO {
         resultSet.next();
         String count = resultSet.getString(1);
         return count;    }
+
+    @Override
+    public String pay() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT Total FROM `Order` ORDER  BY OrderID desc limit 1;");
+        resultSet.next();
+        String count = resultSet.getString(1);
+        return count;
+    }
+
 }
