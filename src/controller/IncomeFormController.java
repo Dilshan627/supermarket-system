@@ -2,6 +2,7 @@ package controller;
 
 import bo.BOFactory;
 import bo.custom.IncomeBO;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.OrderDTO;
@@ -12,6 +13,9 @@ import java.util.ArrayList;
 
 public class IncomeFormController {
     public TableView<OrderTM> tblIncome;
+    public Label lblDay;
+    public Label lblMonth;
+    public Label lblYear;
 
     IncomeBO incomeBO = (IncomeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.Income);
 
@@ -20,6 +24,17 @@ public class IncomeFormController {
         tblIncome.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("CusID"));
         tblIncome.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("OrderDate"));
         tblIncome.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("Total"));
+
+        try {
+            lblDay.setText(incomeBO.dayIncome());
+            lblMonth.setText(incomeBO.monthIncome());
+            lblYear.setText(incomeBO.yearIncome());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
         loadAllOrder();
     }

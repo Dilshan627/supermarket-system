@@ -4,11 +4,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="717.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.IncomeFormController">
    <children>
-      <TableView fx:id="tblIncome" layoutX="132.0" layoutY="282.0" prefHeight="320.0" prefWidth="631.0">
+      <TableView fx:id="tblIncome" layoutX="132.0" layoutY="263.0" prefHeight="320.0" prefWidth="631.0">
         <columns>
           <TableColumn prefWidth="144.0" text="Order ID" />
           <TableColumn prefWidth="164.0" text="Customer ID" />
@@ -16,8 +16,20 @@
             <TableColumn prefWidth="153.0" text="Total" />
         </columns>
       </TableView>
-      <Label alignment="CENTER" layoutX="145.0" layoutY="62.0" prefHeight="100.0" prefWidth="181.0" style="-fx-background-radius: 1em; -fx-background-color: #E8E4C9;" />
-      <Label alignment="CENTER" layoutX="362.0" layoutY="62.0" prefHeight="100.0" prefWidth="181.0" style="-fx-background-radius: 1em; -fx-background-color: #E8E4C9;" />
-      <Label alignment="CENTER" layoutX="578.0" layoutY="62.0" prefHeight="100.0" prefWidth="181.0" style="-fx-background-radius: 1em; -fx-background-color: #E8E4C9;" />
+      <Label fx:id="lblDay" alignment="CENTER" layoutX="143.0" layoutY="81.0" prefHeight="100.0" prefWidth="181.0" style="-fx-background-radius: 1em; -fx-background-color: #E8E4C9;">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="lblMonth" alignment="CENTER" layoutX="360.0" layoutY="81.0" prefHeight="100.0" prefWidth="181.0" style="-fx-background-radius: 1em; -fx-background-color: #E8E4C9;">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="lblYear" alignment="CENTER" layoutX="576.0" layoutY="81.0" prefHeight="100.0" prefWidth="181.0" style="-fx-background-radius: 1em; -fx-background-color: #E8E4C9;">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="220.0" layoutY="154.0" text="Day" />
+      <Label layoutX="439.0" layoutY="154.0" text="Month" />
+      <Label layoutX="649.0" layoutY="154.0" text="Year" />
    </children>
 </AnchorPane>
