@@ -43,6 +43,7 @@ public class PlaceOrderFormController {
     public JFXTextField txtDiscount;
     public JFXButton btnDelete;
     double t1=0;
+    int discount=0;
 
     PurchaseOrderBO purchaseOrderBO = (PurchaseOrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PURCHASE_ORDER);
 
@@ -184,13 +185,19 @@ public class PlaceOrderFormController {
     }
 
     public void btnAdd_OnAction(ActionEvent actionEvent) {
-        if (!txtQty.getText().equals("") && !txtDiscount.getText().equals("")) {
+        if (!txtQty.getText().isEmpty()|| !txtDiscount.getText().isEmpty()) {
+
 
             String discription = txtDescription.getText();
             int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
             double unitPrice = Double.parseDouble(txtUnitPrice.getText());
             int qtyForCustomer = Integer.parseInt(txtQty.getText());
-            double discount = Double.parseDouble(txtDiscount.getText());
+            if (txtDiscount.getText().isEmpty()){
+                 discount = 0;
+            }else {
+                 discount = Integer.parseInt(txtDiscount.getText());
+            }
+
 
             double calTot = (unitPrice * qtyForCustomer);
             Double total = calTot - ((calTot / 100) * discount);

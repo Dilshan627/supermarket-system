@@ -5,13 +5,13 @@ public class CartTM {
     private String description;
     private int QTY;
     private double unitPrice;
-    private double Discount;
+    private int Discount;
     private double total;
 
     public CartTM() {
     }
 
-    public CartTM(String itemCode, String description, int QTY, double unitPrice, double discount, double total) {
+    public CartTM(String itemCode, String description, int QTY, double unitPrice, int discount, double total) {
         this.itemCode = itemCode;
         this.description = description;
         this.QTY = QTY;
@@ -56,7 +56,7 @@ public class CartTM {
         return Discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(int discount) {
         Discount = discount;
     }
 
