@@ -26,7 +26,6 @@ public class AdministratorFormController {
         setDataPicChart();
     }
 
-
     private void setDataPicChart() {
         ObservableList<PieChart.Data> productDate = FXCollections.observableArrayList();
         ArrayList<CustomDTO> customDTOS = null;
@@ -50,7 +49,6 @@ public class AdministratorFormController {
         pieOrder.setTitle("Most Sell Item");
 
     }
-
 
     public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
         util.navigation.navigate(context, "administrator");

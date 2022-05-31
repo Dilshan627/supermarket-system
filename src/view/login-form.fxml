@@ -6,12 +6,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="context" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #ffffff;" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+<AnchorPane fx:id="context" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #425C5F;" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
    <children>
       <Label layoutX="270.0" layoutY="238.0" opacity="0.3" prefHeight="293.0" prefWidth="485.0" style="-fx-background-color: #ffffff; -fx-background-radius: 1em;" />
       <JFXPasswordField fx:id="txtPwp" labelFloat="true" layoutX="333.0" layoutY="359.0" prefHeight="35.0" prefWidth="356.0" promptText="Password" />
       <JFXTextField fx:id="txtUser" labelFloat="true" layoutX="331.0" layoutY="303.0" prefHeight="35.0" prefWidth="356.0" promptText="User Name" />
-      <JFXButton fx:id="btnAdministratorSign" layoutX="377.0" layoutY="431.0" onAction="#AdministratorSignInOnAction" prefHeight="28.0" prefWidth="142.0" style="-fx-border-color: #808080;" text="Administrator Sign In" />
-      <JFXButton fx:id="btnCashierSign" layoutX="522.0" layoutY="431.0" onAction="#CashierSignInOnAction" prefHeight="28.0" prefWidth="128.0" style="-fx-border-color: #808080;" text="Cashier Sign In" />
+      <JFXButton fx:id="btnAdministratorSign" layoutX="377.0" layoutY="431.0" onAction="#AdministratorSignInOnAction" prefHeight="28.0" prefWidth="142.0" style="-fx-background-color: #A3B2B4;" text="Administrator Sign In" />
+      <JFXButton fx:id="btnCashierSign" layoutX="522.0" layoutY="431.0" onAction="#CashierSignInOnAction" prefHeight="28.0" prefWidth="128.0" style="-fx-background-color: #A3B2B4;" text="Cashier Sign In" />
    </children>
 </AnchorPane>
