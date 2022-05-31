@@ -2,8 +2,12 @@ package controller;
 
 import bo.BOFactory;
 import bo.custom.AdministratorBO;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 import model.CustomDTO;
@@ -16,28 +20,37 @@ public class AdministratorFormController {
     private final AdministratorBO bo = (AdministratorBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.Administrator);
     public AnchorPane sideContext;
     public AnchorPane context;
-    public BarChart barChart;
+    public PieChart pieOrder;
 
     public void initialize() {
-        orderBarChart();
+        setDataPicChart();
     }
 
-    private void orderBarChart() {
-        XYChart.Series dataSeries = new XYChart.Series();
-        dataSeries.setName("Most Sell Item");
+
+    private void setDataPicChart() {
+        ObservableList<PieChart.Data> productDate = FXCollections.observableArrayList();
         ArrayList<CustomDTO> customDTOS = null;
         try {
             customDTOS = bo.MostSellItem();
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         for (int i = 0; i < customDTOS.size(); i++) {
-                dataSeries.getData().add(new XYChart.Data(customDTOS.get(i).getDescription(),customDTOS.get(i).getOrderqty()));
-            }
-        barChart.getData().add(dataSeries);
+            productDate.add(new PieChart.Data(customDTOS.get(i).getDescription(), customDTOS.get(i).getOrderqty()));
+        }
+        productDate.forEach(data ->
+                data.nameProperty().bind(
+                        Bindings.concat(data.getName(), " ", data.pieValueProperty())
+                )
+        );
+        pieOrder.setData(productDate);
+        pieOrder.setTitle("Most Sell Item");
+
     }
+
 
     public void dashboardOnAction(ActionEvent actionEvent) throws IOException {
         util.navigation.navigate(context, "administrator");

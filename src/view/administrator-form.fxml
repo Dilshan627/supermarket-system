@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -14,14 +12,7 @@
       <JFXButton layoutX="951.0" layoutY="10.0" onAction="#logoutOnAction" style="-fx-border-color: #808080;" text="Log out" />
       <AnchorPane fx:id="sideContext" layoutX="152.0" layoutY="51.0" prefHeight="717.0" prefWidth="872.0">
          <children>
-            <BarChart fx:id="barChart" layoutX="52.0" layoutY="168.0" prefHeight="404.0" prefWidth="774.0" stylesheets="@style/style.css">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
+            <PieChart fx:id="pieOrder" layoutX="164.0" layoutY="122.0" prefHeight="473.0" prefWidth="545.0" />
          </children></AnchorPane>
       <JFXButton layoutX="9.0" layoutY="246.0" onAction="#itemOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Add new Item" />
       <JFXButton layoutX="9.0" layoutY="216.0" onAction="#dashboardOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Dashboard" />

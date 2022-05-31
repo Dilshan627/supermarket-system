@@ -6,11 +6,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="306.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderPayFormController">
+<AnchorPane fx:id="context" prefHeight="306.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderPayFormController">
    <children>
-      <JFXComboBox fx:id="cmbPay" layoutX="100.0" layoutY="201.0" prefHeight="25.0" prefWidth="177.0" />
-      <JFXButton fx:id="btnPay" layoutX="401.0" layoutY="201.0" text="Button" />
+      <JFXComboBox fx:id="cmbPay" layoutX="115.0" layoutY="212.0" prefHeight="25.0" prefWidth="177.0" />
+      <JFXButton layoutX="338.0" layoutY="214.0" onAction="#payOnAction" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: #000000;" stylesheets="@style/style.css" text="Pay" textFill="WHITE" />
       <Label alignment="CENTER" layoutX="215.0" layoutY="30.0" prefHeight="69.0" prefWidth="196.0" text="Payment" textFill="#58a167">
          <font>
             <Font name="System Italic" size="47.0" />
@@ -19,6 +18,11 @@
       <Label fx:id="lblPay" alignment="CENTER" layoutX="224.0" layoutY="121.0" prefHeight="64.0" prefWidth="177.0" text="PAY">
          <font>
             <Font size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="214.0" layoutY="137.0" text="RS :">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
    </children>
