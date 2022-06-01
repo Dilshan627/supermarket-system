@@ -64,7 +64,7 @@ public class CustomerFormController {
         try {
             ArrayList<CustomerDTO> allCustomers = customerBO.getAllCustomers();
             for (CustomerDTO customer : allCustomers) {
-                tblCustomers.getItems().add(new CustomerTM(customer.getCusID(), customer.getCusTitle(), customer.getCusName(),customer.getCusAddress(),customer.getCity(),customer.getProvince(),customer.getPostCode()));
+                tblCustomers.getItems().add(new CustomerTM(customer.getCusID(), customer.getCusTitle(), customer.getCusName(), customer.getCusAddress(), customer.getCity(), customer.getProvince(), customer.getPostCode()));
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -95,17 +95,34 @@ public class CustomerFormController {
         String province = txtCustomerProvince.getText();
         String postcode = txtPostalCode.getText();
 
-        if (txtCustomerTitle.getLength() != 0 && txtCustomerName.getLength() != 0 && txtCustomerAddress.getLength() != 0 && txtCustomerCity.getLength() != 0 && txtCustomerProvince.getLength() != 0 && txtPostalCode.getLength() != 0){
+        if (txtCustomerTitle.getLength() != 0 && txtCustomerName.getLength() != 0 && txtCustomerAddress.getLength() != 0 && txtCustomerCity.getLength() != 0 && txtCustomerProvince.getLength() != 0 && txtPostalCode.getLength() != 0) {
 
             if (!name.matches("[A-Za-z ]+")) {
-                new Alert(Alert.AlertType.ERROR, "Invalid name").show();
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtCustomerTitle.requestFocus();
+                return;
+            } else if (!address.matches("[A-Za-z ]+")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtCustomerName.requestFocus();
                 return;
-            } else if (!address.matches(".{3,}")) {
-                new Alert(Alert.AlertType.ERROR, "Address should be at least 3 characters long").show();
+            } else if (!address.matches("[A-Za-z ]+")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtCustomerCity.requestFocus();
+                return;
+            } else if (!address.matches("[A-Za-z ]+")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtCustomerProvince.requestFocus();
+                return;
+            } else if (!address.matches("/\\d{6}/")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtPostalCode.requestFocus();
+                return;
+            } else if (!address.matches("[A-Za-z ]+")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtCustomerAddress.requestFocus();
                 return;
             }
+
 
             if (btnSave.getText().equalsIgnoreCase("save")) {
 
@@ -114,8 +131,8 @@ public class CustomerFormController {
                         new Alert(Alert.AlertType.ERROR, id + " already exists").show();
                     }
 
-                    customerBO.saveCustomer(new CustomerDTO(id,title, name, address,city,province,postcode));
-                    tblCustomers.getItems().add(new CustomerTM(id,title, name, address,city,province,postcode));
+                    customerBO.saveCustomer(new CustomerDTO(id, title, name, address, city, province, postcode));
+                    tblCustomers.getItems().add(new CustomerTM(id, title, name, address, city, province, postcode));
                 } catch (SQLException e) {
                     new Alert(Alert.AlertType.ERROR, "Failed to save the customer " + e.getMessage()).show();
                     e.printStackTrace();
@@ -130,7 +147,7 @@ public class CustomerFormController {
                         new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + id).show();
                     }
 
-                    customerBO.updateCustomer(new CustomerDTO(id,title, name, address,city,province,postcode));
+                    customerBO.updateCustomer(new CustomerDTO(id, title, name, address, city, province, postcode));
 
                 } catch (SQLException e) {
                     new Alert(Alert.AlertType.ERROR, "Failed to update the customer " + id + e.getMessage()).show();

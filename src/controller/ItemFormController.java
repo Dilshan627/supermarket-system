@@ -83,13 +83,37 @@ public class ItemFormController {
 
     public void btnSave_OnAction(ActionEvent actionEvent) {
 
+        isValid();
         if (txtDescription.getLength() != 0 && txtUnitPrice.getLength() != 0 && txtQtyOnHand.getLength() != 0 && txtPackageSize.getLength() != 0) {
+
 
             String code = txtCode.getText();
             String description = txtDescription.getText();
             String packageSize = txtPackageSize.getText();
             Double unitPrice = Double.parseDouble(txtUnitPrice.getText());
             int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+
+            String price= String.valueOf(unitPrice);
+            String qty = String.valueOf(qtyOnHand);
+
+
+            if (!description.matches("[A-Za-z ]+")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtDescription.requestFocus();
+                return;
+            } else if (!packageSize.matches("[A-Za-z ]+")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtPackageSize.requestFocus();
+                return;
+            } else if (!price.matches("[A-Za-z ]+")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtUnitPrice.requestFocus();
+                return;
+            } else if (!qty.matches("[A-Za-z ]+")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtQtyOnHand.requestFocus();
+                return;
+            }
 
 
             if (btnSave.getText().equalsIgnoreCase("save")) {
