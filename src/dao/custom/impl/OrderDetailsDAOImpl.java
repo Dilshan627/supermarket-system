@@ -51,9 +51,9 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     public ArrayList<OrderDetail> orderId() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.executeQuery("SELECT OrderID FROM `Order Details` group by OrderID");
         ArrayList<OrderDetail> id = new ArrayList<>();
-       while (rst.next()){
-           id.add(new OrderDetail(rst.getString(1)));
-       }
+        while (rst.next()) {
+            id.add(new OrderDetail(rst.getString(1)));
+        }
         return id;
     }
 
@@ -62,7 +62,7 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
         ResultSet rst = SQLUtil.executeQuery("SELECT * FROM  `Order Details` WHERE OrderID=?", id);
         ArrayList<OrderDetail> allOrder = new ArrayList<>();
         while (rst.next()) {
-           allOrder.add(new OrderDetail(rst.getString(1),rst.getString(2),rst.getInt(3),rst.getDouble(4),rst.getDouble(5)));
+            allOrder.add(new OrderDetail(rst.getString(1), rst.getString(2), rst.getInt(3), rst.getDouble(4), rst.getDouble(5)));
         }
 
         return allOrder;

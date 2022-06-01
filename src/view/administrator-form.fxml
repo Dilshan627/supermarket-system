@@ -15,12 +15,12 @@
          <children>
             <PieChart fx:id="pieOrder" layoutX="164.0" layoutY="123.0" prefHeight="473.0" prefWidth="545.0" />
             <Label layoutX="365.0" layoutY="289.0" prefHeight="140.0" prefWidth="143.0" style="-fx-background-radius: 40em; -fx-background-color: #F9FDFE;" />
-            <Label layoutX="104.0" layoutY="635.0" prefHeight="67.0" prefWidth="693.0" text="Last selling item :">
+            <Label alignment="CENTER" layoutX="104.0" layoutY="635.0" prefHeight="67.0" prefWidth="693.0" style="-fx-background-color: #FFDFE0;" text="Last selling item :">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblItem" layoutX="232.0" layoutY="658.0" prefHeight="21.0" prefWidth="152.0" text="Label">
+            <Label fx:id="lblItem" layoutX="515.0" layoutY="658.0" prefHeight="21.0" prefWidth="152.0" text="Label">
                <font>
                   <Font size="15.0" />
                </font>

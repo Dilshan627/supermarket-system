@@ -24,7 +24,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <JFXButton layoutX="410.0" layoutY="115.0" onAction="#searchonAction" text="Search" />
+      <JFXButton layoutX="410.0" layoutY="115.0" onAction="#searchonAction" style="-fx-border-color: #000000;" text="Search" />
       <JFXComboBox fx:id="cmbId" layoutX="167.0" layoutY="110.0" prefHeight="25.0" prefWidth="220.0" promptText="Order Id" />
    </children>
 </AnchorPane>

@@ -19,4 +19,12 @@ public class QueryDAOImpl implements QueryDAO {
         }
         return allCustomers;
     }
+
+    @Override
+    public String lastSell() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT  m.Description  FROM Item m INNER JOIN `Order Details`c WHERE c.ItemCode=m.ItemCode ORDER BY OrderID desc limit 1");
+        resultSet.next();
+        String count = resultSet.getString(1);
+        return count;
+    }
 }

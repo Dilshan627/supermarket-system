@@ -26,6 +26,13 @@ public class AdministratorFormController {
 
     public void initialize() {
         setDataPicChart();
+        try {
+            lblItem.setText(bo.lastSell());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setDataPicChart() {

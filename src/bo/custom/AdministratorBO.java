@@ -11,4 +11,6 @@ import java.util.ArrayList;
 public interface AdministratorBO extends SuperBO {
 
     ArrayList<CustomDTO> MostSellItem() throws SQLException, ClassNotFoundException;
+
+    String lastSell() throws SQLException, ClassNotFoundException;
 }

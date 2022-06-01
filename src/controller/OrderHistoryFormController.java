@@ -33,7 +33,7 @@ public class OrderHistoryFormController {
         tblOrder.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("Price"));
         try {
             ArrayList<OrderDetailDTO> list = orderDetailsBO.orderId();
-            for (OrderDetailDTO  dto: list) {
+            for (OrderDetailDTO dto : list) {
                 cmbId.getItems().add(dto.getOrderID());
             }
 
@@ -48,7 +48,7 @@ public class OrderHistoryFormController {
 
     public void searchonAction(ActionEvent actionEvent) {
         tblOrder.getItems().clear();
-        String id= String.valueOf(cmbId.getSelectionModel().getSelectedItem());
+        String id = String.valueOf(cmbId.getSelectionModel().getSelectedItem());
         ObservableList dto = FXCollections.observableArrayList();
         try {
             ArrayList<OrderDetailDTO> list = orderDetailsBO.searchOrder(id);

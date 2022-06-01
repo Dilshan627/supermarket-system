@@ -22,4 +22,9 @@ public class AdministratorBOImpl implements AdministratorBO {
         }
         return MostSellItem;
     }
+
+    @Override
+    public String lastSell() throws SQLException, ClassNotFoundException {
+        return queryDAO.lastSell();
+    }
 }

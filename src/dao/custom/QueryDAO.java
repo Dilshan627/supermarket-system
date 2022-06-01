@@ -9,4 +9,7 @@ import java.util.ArrayList;
 public interface QueryDAO extends SuperDAO {
 
     ArrayList<Custom> MostSellItem() throws SQLException, ClassNotFoundException;
+
+    String lastSell() throws SQLException, ClassNotFoundException;
+
 }
