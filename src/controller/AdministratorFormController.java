@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import model.CustomDTO;
 
@@ -21,6 +22,7 @@ public class AdministratorFormController {
     public AnchorPane sideContext;
     public AnchorPane context;
     public PieChart pieOrder;
+    public Label lblItem;
 
     public void initialize() {
         setDataPicChart();

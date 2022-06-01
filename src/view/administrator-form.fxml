@@ -4,6 +4,7 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="context" prefHeight="768.0" prefWidth="1024.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdministratorFormController">
    <children>
@@ -14,6 +15,16 @@
          <children>
             <PieChart fx:id="pieOrder" layoutX="164.0" layoutY="123.0" prefHeight="473.0" prefWidth="545.0" />
             <Label layoutX="365.0" layoutY="289.0" prefHeight="140.0" prefWidth="143.0" style="-fx-background-radius: 40em; -fx-background-color: #F9FDFE;" />
+            <Label layoutX="104.0" layoutY="635.0" prefHeight="67.0" prefWidth="693.0" text="Last selling item :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblItem" layoutX="232.0" layoutY="658.0" prefHeight="21.0" prefWidth="152.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
       <JFXButton layoutX="9.0" layoutY="246.0" onAction="#itemOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Add new Item" />
       <JFXButton layoutX="9.0" layoutY="216.0" onAction="#dashboardOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Dashboard" />

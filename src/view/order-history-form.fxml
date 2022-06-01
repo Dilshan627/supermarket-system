@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,18 +10,21 @@
 
 <AnchorPane prefHeight="717.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderHistoryFormController">
    <children>
-      <TableView fx:id="tblOrder" layoutX="57.0" layoutY="138.0" prefHeight="527.0" prefWidth="783.0">
+      <TableView fx:id="tblOrder" layoutX="57.0" layoutY="173.0" prefHeight="527.0" prefWidth="783.0">
         <columns>
-          <TableColumn prefWidth="185.0" text="Order ID" />
-          <TableColumn prefWidth="208.0" text="Customer" />
-            <TableColumn prefWidth="214.0" text="OrderDate" />
-            <TableColumn prefWidth="165.0" text="Total" />
+          <TableColumn prefWidth="125.0" text="Order ID" />
+          <TableColumn prefWidth="163.0" text="Item Code" />
+            <TableColumn prefWidth="158.0" text="Qty" />
+            <TableColumn prefWidth="174.0" text="Discount" />
+            <TableColumn prefWidth="158.0" text="Total" />
         </columns>
       </TableView>
-      <Label layoutX="57.0" layoutY="37.0" prefHeight="42.0" prefWidth="138.0" text="Order History">
+      <Label layoutX="57.0" layoutY="37.0" prefHeight="42.0" prefWidth="138.0" text="Order Search">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+      <JFXTextField fx:id="txtId" layoutX="167.0" layoutY="115.0" prefHeight="25.0" prefWidth="220.0" promptText="Order Id" />
+      <JFXButton layoutX="410.0" layoutY="115.0" onAction="#searchonAction" text="Search" />
    </children>
 </AnchorPane>
