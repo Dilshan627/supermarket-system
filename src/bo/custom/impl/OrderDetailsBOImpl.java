@@ -19,9 +19,21 @@ public class OrderDetailsBOImpl implements OrderDetailsBO {
 
     @Override
     public ArrayList<OrderDetailDTO> searchOrder(String id) throws SQLException, ClassNotFoundException {
-        OrderDetail search = orderDetailsDAO.search(id);
+        ArrayList<OrderDetail> orderDetail = orderDetailsDAO.order(id);
         ArrayList<OrderDetailDTO> list = new ArrayList();
-        list.add(new OrderDetailDTO(search.getOrderID(), search.getItemCode(), search.getOrderqty(), search.getDiscount(), search.getPrice()));
+        for (OrderDetail detail: orderDetail) {
+            list.add((new OrderDetailDTO(detail.getOrderID(), detail.getItemCode(), detail.getOrderqty(), detail.getDiscount(), detail.getPrice())));
+        }
+        return list;
+    }
+
+    @Override
+    public ArrayList<OrderDetailDTO> orderId() throws SQLException, ClassNotFoundException {
+        ArrayList<OrderDetail> orderDetails = orderDetailsDAO.orderId();
+        ArrayList<OrderDetailDTO> list = new ArrayList<>();
+        for (OrderDetail detail: orderDetails) {
+            list.add(new OrderDetailDTO(detail.getOrderID()));
+        }
         return list;
     }
 }

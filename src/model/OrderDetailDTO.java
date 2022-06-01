@@ -13,6 +13,10 @@ public class OrderDetailDTO {
     public OrderDetailDTO() {
     }
 
+    public OrderDetailDTO(String orderID) {
+        OrderID = orderID;
+    }
+
     public OrderDetailDTO(String orderID, String itemCode, int orderqty, double discount, double price) {
         OrderID = orderID;
         ItemCode = itemCode;
@@ -71,5 +75,4 @@ public class OrderDetailDTO {
                 ", Price=" + Price +
                 '}';
     }
-
 }

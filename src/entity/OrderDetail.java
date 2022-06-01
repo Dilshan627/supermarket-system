@@ -10,6 +10,10 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
+    public OrderDetail(String orderID) {
+        OrderID = orderID;
+    }
+
     public OrderDetail(String orderID, String itemCode, int orderqty, double discount, double price) {
         OrderID = orderID;
         ItemCode = itemCode;

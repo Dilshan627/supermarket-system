@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -24,7 +24,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtId" layoutX="167.0" layoutY="115.0" prefHeight="25.0" prefWidth="220.0" promptText="Order Id" />
       <JFXButton layoutX="410.0" layoutY="115.0" onAction="#searchonAction" text="Search" />
+      <JFXComboBox fx:id="cmbId" layoutX="167.0" layoutY="110.0" prefHeight="25.0" prefWidth="220.0" promptText="Order Id" />
    </children>
 </AnchorPane>
