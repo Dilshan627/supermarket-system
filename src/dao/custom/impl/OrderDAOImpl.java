@@ -60,6 +60,30 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
+    public String dayIncome(String day) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT sum(Total) FROM `Order` WHERE DATE(OrderDate)= ?",day);
+        resultSet.next();
+        String count = resultSet.getString(1);
+        return count;
+    }
+
+    @Override
+    public String monthIncome(String month) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT sum(Total) FROM `Order` WHERE MONTH(OrderDate)= ?",month);
+        resultSet.next();
+        String count = resultSet.getString(1);
+        return count;
+    }
+
+    @Override
+    public String yearIncome(String year) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT sum(Total) FROM `Order` WHERE YEAR(OrderDate)= ?",year);
+        resultSet.next();
+        String count = resultSet.getString(1);
+        return count;
+    }
+
+ /*   @Override
     public String dayIncome() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = SQLUtil.executeQuery("SELECT sum(Total) FROM `Order` WHERE DATE(OrderDate)= DATE(NOW());");
         resultSet.next();
@@ -87,5 +111,5 @@ public class OrderDAOImpl implements OrderDAO {
         String count = resultSet.getString(1);
         return count;
     }
-
+*/
 }

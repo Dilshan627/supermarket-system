@@ -169,9 +169,7 @@ public class PlaceOrderFormController {
         }
         try {
             purchaseOrderBO.purchaseOrder(order, details);
-            util.navigation.popup("order-pay-form");
-
-        } catch (SQLException | IOException | ClassNotFoundException e) {
+        } catch (SQLException  | ClassNotFoundException e) {
             e.printStackTrace();
         }
         lblId.setText(generateNewOrderId());

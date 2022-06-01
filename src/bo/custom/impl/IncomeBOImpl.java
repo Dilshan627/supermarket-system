@@ -24,6 +24,21 @@ public class IncomeBOImpl implements IncomeBO {
     }
 
     @Override
+    public String dayIncome(String date) throws SQLException, ClassNotFoundException {
+        return orderDAO.dayIncome(date);
+    }
+
+    @Override
+    public String monthIncome(String month) throws SQLException, ClassNotFoundException {
+        return orderDAO.monthIncome(month);
+    }
+
+    @Override
+    public String yearIncome(String year) throws SQLException, ClassNotFoundException {
+        return orderDAO.yearIncome(year);
+    }
+
+   /* @Override
     public String dayIncome() throws SQLException, ClassNotFoundException {
         return orderDAO.dayIncome();
     }
@@ -36,5 +51,5 @@ public class IncomeBOImpl implements IncomeBO {
     @Override
     public String yearIncome() throws SQLException, ClassNotFoundException {
         return orderDAO.yearIncome();
-    }
+    }*/
 }

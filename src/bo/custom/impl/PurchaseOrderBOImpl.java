@@ -53,10 +53,9 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
                 //**  quantity update *//*
                 updateQty(detail.getItemCode(), detail.getOrderqty());
             }
-
             if (isDetailsSaved) {
                 connection.commit();
-               // new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully...!").showAndWait();
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved Successfully...!").showAndWait();
             } else {
                 connection.rollback();
                 new Alert(Alert.AlertType.ERROR, "Error...!").show();

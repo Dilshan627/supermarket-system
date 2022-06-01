@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -31,5 +33,9 @@
       <Label layoutX="220.0" layoutY="154.0" text="Day" />
       <Label layoutX="439.0" layoutY="154.0" text="Month" />
       <Label layoutX="649.0" layoutY="154.0" text="Year" />
+      <ComboBox fx:id="cmbDate" layoutX="155.0" layoutY="48.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmbMonth" layoutX="376.0" layoutY="48.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmbYear" layoutX="592.0" layoutY="48.0" prefWidth="150.0" />
+      <Button layoutX="750.0" layoutY="48.0" mnemonicParsing="false" onAction="#btnOnAction" text="&gt;" />
    </children>
 </AnchorPane>

@@ -12,7 +12,8 @@
       <JFXButton layoutX="951.0" layoutY="10.0" onAction="#logoutOnAction" style="-fx-border-color: #808080;" text="Log out" />
       <AnchorPane fx:id="sideContext" layoutX="152.0" layoutY="51.0" prefHeight="717.0" prefWidth="872.0" style="-fx-background-color: #F9FDFE;">
          <children>
-            <PieChart fx:id="pieOrder" layoutX="164.0" layoutY="122.0" prefHeight="473.0" prefWidth="545.0" />
+            <PieChart fx:id="pieOrder" layoutX="164.0" layoutY="123.0" prefHeight="473.0" prefWidth="545.0" />
+            <Label layoutX="365.0" layoutY="289.0" prefHeight="140.0" prefWidth="143.0" style="-fx-background-radius: 40em; -fx-background-color: #F9FDFE;" />
          </children></AnchorPane>
       <JFXButton layoutX="9.0" layoutY="246.0" onAction="#itemOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Add new Item" />
       <JFXButton layoutX="9.0" layoutY="216.0" onAction="#dashboardOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Dashboard" />

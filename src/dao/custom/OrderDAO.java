@@ -9,12 +9,10 @@ public interface OrderDAO  extends CrudDAO<Orders,String> {
 
     String orderCount() throws SQLException, ClassNotFoundException;
 
-    String dayIncome() throws SQLException, ClassNotFoundException;
+    String dayIncome(String day) throws SQLException, ClassNotFoundException;
 
-    String monthIncome() throws SQLException, ClassNotFoundException;
+    String monthIncome(String month) throws SQLException, ClassNotFoundException;
 
-    String yearIncome() throws SQLException, ClassNotFoundException;
-
-    String pay() throws SQLException, ClassNotFoundException;
+    String yearIncome(String year) throws SQLException, ClassNotFoundException;
 
 }

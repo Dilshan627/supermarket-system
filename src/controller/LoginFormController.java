@@ -18,7 +18,6 @@ public class LoginFormController {
     public JFXButton btnAdministratorSign;
     public JFXButton btnCashierSign;
 
-
     public void AdministratorSignInOnAction(ActionEvent actionEvent) throws IOException {
         if (txtUser.getText().equals("a") && txtPwp.getText().equals("1"))
             util.navigation.navigate(context, "administrator");

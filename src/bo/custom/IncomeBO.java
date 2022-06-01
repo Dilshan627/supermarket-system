@@ -10,9 +10,9 @@ public interface IncomeBO extends SuperBO {
 
     ArrayList<OrderDTO> getAllOrder() throws SQLException, ClassNotFoundException;
 
-    String dayIncome() throws SQLException, ClassNotFoundException;
+    String dayIncome(String date) throws SQLException, ClassNotFoundException;
 
-    String monthIncome() throws SQLException, ClassNotFoundException;
+    String monthIncome(String month) throws SQLException, ClassNotFoundException;
 
-    String yearIncome() throws SQLException, ClassNotFoundException;
+    String yearIncome(String year) throws SQLException, ClassNotFoundException;
 }

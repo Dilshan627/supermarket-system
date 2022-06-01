@@ -31,15 +31,13 @@ public class BOFactory {
                 return new CashierBOImpl();
             case  Income:
                 return new IncomeBOImpl();
-            case  Pay:
-                return new OrderPayBoImpl();
             default:
                 return null;
         }
     }
 
     public enum BOTypes {
-        CUSTOMER, ITEM, PURCHASE_ORDER, Order_Details, Administrator,Income,Cashier,Pay
+        CUSTOMER, ITEM, PURCHASE_ORDER, Order_Details, Administrator,Income,Cashier
     }
 
 }
