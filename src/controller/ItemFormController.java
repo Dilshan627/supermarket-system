@@ -83,7 +83,7 @@ public class ItemFormController {
 
     public void btnSave_OnAction(ActionEvent actionEvent) {
 
-        isValid();
+
         if (txtDescription.getLength() != 0 && txtUnitPrice.getLength() != 0 && txtQtyOnHand.getLength() != 0 && txtPackageSize.getLength() != 0) {
 
 
@@ -155,29 +155,7 @@ public class ItemFormController {
         }
     }
 
-    private boolean isValid() {
-        boolean des = txtDescription.getText().matches("[A-Za-z0-9 ]+");
-        boolean pac = txtPackageSize.getText().matches("[A-Za-z0-9 ]+");
-        boolean uni = txtUnitPrice.getText().matches("^[0-9]+[.]?[0-9]*$");
-        boolean qty = txtQtyOnHand.getText().matches("^\\d+$");
 
-        if (des) {
-            txtDescription.setFocusColor(Paint.valueOf("#4059a9"));
-        } else if (pac) {
-            txtPackageSize.setFocusColor(Paint.valueOf("#4059a9"));
-        } else if (uni) {
-            txtUnitPrice.setFocusColor(Paint.valueOf("#4059a9"));
-        } else if (qty) {
-            txtQtyOnHand.setFocusColor(Paint.valueOf("#4059a9"));
-        } else {
-            txtDescription.setFocusColor(Paint.valueOf("#FF0000"));
-            txtPackageSize.setFocusColor(Paint.valueOf("#FF0000"));
-            txtUnitPrice.setFocusColor(Paint.valueOf("#FF0000"));
-            txtQtyOnHand.setFocusColor(Paint.valueOf("#FF0000"));
-        }
-
-        return des && pac && uni && qty;
-    }
 
     private boolean existItem(String code) throws SQLException, ClassNotFoundException {
         return itemBO.itemExist(code);
