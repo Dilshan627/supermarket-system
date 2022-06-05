@@ -47,6 +47,6 @@
          </children></AnchorPane>
       <JFXButton layoutX="8.0" layoutY="206.0" onAction="#dashboardOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Dashboard" />
       <JFXButton layoutX="8.0" layoutY="266.0" onAction="#placeOrderOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="place oder" />
-      <JFXButton layoutX="8.0" layoutY="296.0" onAction="#orderHistoryOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="order history " />
+      <JFXButton layoutX="8.0" layoutY="296.0" onAction="#orderHistoryOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="order Search" />
    </children>
 </AnchorPane>

@@ -10,10 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Paint;
 import model.ItemDTO;
 import view.tm.ItemTM;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,15 +99,15 @@ public class ItemFormController {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtDescription.requestFocus();
                 return;
-            } else if (!packageSize.matches("[A-Za-z ]+")) {
+            } else if (!packageSize.matches("[0-9]+g|[0-9]+kg")) {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtPackageSize.requestFocus();
                 return;
-            } else if (!price.matches("[A-Za-z ]+")) {
+            } else if (!price.matches("[0-9]+.[0-9]+")) {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtUnitPrice.requestFocus();
                 return;
-            } else if (!qty.matches("[A-Za-z ]+")) {
+            } else if (!qty.matches("[0-9]+")) {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtQtyOnHand.requestFocus();
                 return;

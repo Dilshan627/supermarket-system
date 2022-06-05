@@ -97,29 +97,29 @@ public class CustomerFormController {
 
         if (txtCustomerTitle.getLength() != 0 && txtCustomerName.getLength() != 0 && txtCustomerAddress.getLength() != 0 && txtCustomerCity.getLength() != 0 && txtCustomerProvince.getLength() != 0 && txtPostalCode.getLength() != 0) {
 
-            if (!name.matches("[A-Za-z ]+")) {
+            if (!title.matches("^(Mr|Mrs|Mis)$")) {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtCustomerTitle.requestFocus();
                 return;
-            } else if (!address.matches("[A-Za-z ]+")) {
+            } else if (!name.matches("^[A-Za-z]+$")) {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtCustomerName.requestFocus();
                 return;
-            } else if (!address.matches("[A-Za-z ]+")) {
+            } else if (!address.matches("^[A-Za-z ]+$")) {
+                new Alert(Alert.AlertType.ERROR, "Invalid").show();
+                txtCustomerAddress.requestFocus();
+                return;
+            } else if (!city.matches("^[A-Za-z ]+$")) {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtCustomerCity.requestFocus();
                 return;
-            } else if (!address.matches("[A-Za-z ]+")) {
+            } else if (!province.matches("^[A-Za-z ]+$")) {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtCustomerProvince.requestFocus();
                 return;
-            } else if (!address.matches("/\\d{6}/")) {
+            } else if (!postcode.matches("[0-9]{4,6}")) {
                 new Alert(Alert.AlertType.ERROR, "Invalid").show();
                 txtPostalCode.requestFocus();
-                return;
-            } else if (!address.matches("[A-Za-z ]+")) {
-                new Alert(Alert.AlertType.ERROR, "Invalid").show();
-                txtCustomerAddress.requestFocus();
                 return;
             }
 

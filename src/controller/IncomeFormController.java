@@ -54,7 +54,7 @@ public class IncomeFormController {
         cmbMonth.setValue(month);
         cmbYear.setValue(year);
 
-        String now=cmbYear.getSelectionModel().getSelectedItem()+"-"+cmbMonth.getSelectionModel().getSelectedItem()+"-"+cmbDate.getSelectionModel().getSelectedItem();
+        String now = cmbYear.getSelectionModel().getSelectedItem() + "-" + cmbMonth.getSelectionModel().getSelectedItem() + "-" + cmbDate.getSelectionModel().getSelectedItem();
         tblIncome.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("OrderID"));
         tblIncome.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("CusID"));
         tblIncome.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("OrderDate"));
@@ -62,7 +62,7 @@ public class IncomeFormController {
 
         try {
             lblDay.setText(incomeBO.dayIncome(now));
-            lblMonth.setText(incomeBO.monthIncome(now));
+            lblMonth.setText(incomeBO.monthIncome(month));
             lblYear.setText(incomeBO.yearIncome(now));
         } catch (SQLException e) {
             e.printStackTrace();
@@ -89,8 +89,8 @@ public class IncomeFormController {
     }
 
     public void btnOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        String now=cmbYear.getSelectionModel().getSelectedItem()+"-"+cmbMonth.getSelectionModel().getSelectedItem()+"-"+cmbDate.getSelectionModel().getSelectedItem();
-        String Month= String.valueOf(cmbMonth.getSelectionModel().getSelectedItem());
+        String now = cmbYear.getSelectionModel().getSelectedItem() + "-" + cmbMonth.getSelectionModel().getSelectedItem() + "-" + cmbDate.getSelectionModel().getSelectedItem();
+        String Month = String.valueOf(cmbMonth.getSelectionModel().getSelectedItem());
         lblDay.setText(incomeBO.dayIncome(now));
         lblMonth.setText(incomeBO.monthIncome(Month));
         lblYear.setText(incomeBO.yearIncome(now));
