@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class OrderHistoryFormController {
+public class OrderDetailsFormController {
     private final OrderDetailsBO orderDetailsBO = (OrderDetailsBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.Order_Details);
     public TableView<OrderDetailTM> tblOrder;
     public JFXComboBox cmbId;

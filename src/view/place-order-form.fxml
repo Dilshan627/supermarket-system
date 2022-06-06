@@ -47,5 +47,10 @@
       <JFXButton id="btnSave" fx:id="btnPlaceOrder" layoutX="745.0" layoutY="646.0" onAction="#btnPlaceOrder_OnAction" prefHeight="35.0" prefWidth="101.0" style="-fx-cursor: hand; -fx-background-color: #5ECECD; -fx-text-fill: black;" text="Place Order" />
       <JFXTextField fx:id="txtDiscount" labelFloat="true" layoutX="664.0" layoutY="250.0" prefHeight="28.0" prefWidth="86.0" promptText="Discount" />
       <JFXButton id="btnSave" fx:id="btnDelete" layoutX="597.0" layoutY="316.0" onAction="#btnDelete_OnAction" prefHeight="28.0" prefWidth="74.0" style="-fx-cursor: hand; -fx-border-color: #080808;" text="Delete" />
+      <Label layoutX="755.0" layoutY="252.0" prefHeight="28.0" prefWidth="24.0" text="\%">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

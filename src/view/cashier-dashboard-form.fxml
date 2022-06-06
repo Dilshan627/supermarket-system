@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -44,9 +46,24 @@
                   <Font size="15.0" />
                </font>
             </Label>
+            <ImageView fitHeight="41.0" fitWidth="44.0" layoutX="183.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assests/2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="652.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assests/3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="413.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assests/icons8-order-64.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <JFXButton layoutX="8.0" layoutY="206.0" onAction="#dashboardOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="Dashboard" />
       <JFXButton layoutX="8.0" layoutY="266.0" onAction="#placeOrderOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="place oder" />
-      <JFXButton layoutX="8.0" layoutY="296.0" onAction="#orderHistoryOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="order Search" />
+      <JFXButton layoutX="8.0" layoutY="296.0" onAction="#orderHistoryOnAction" prefHeight="27.0" prefWidth="136.0" style="-fx-border-color: #808080;" text="order Details" />
    </children>
 </AnchorPane>

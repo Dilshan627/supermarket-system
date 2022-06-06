@@ -51,7 +51,7 @@ public class CashierDashboardFormController {
     }
 
     public void orderHistoryOnAction(ActionEvent actionEvent) throws IOException {
-        util.navigation.navigate(sideContext, "order-history");
+        util.navigation.navigate(sideContext, "order-details");
     }
 
 }

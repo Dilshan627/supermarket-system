@@ -20,6 +20,11 @@ public class Item {
         this.qtyOnHand = qtyOnHand;
     }
 
+    public Item(String description, int qtyOnHand) {
+        this.description = description;
+        this.qtyOnHand = qtyOnHand;
+    }
+
     public String getCode() {
         return code;
     }

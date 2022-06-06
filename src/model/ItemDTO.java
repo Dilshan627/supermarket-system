@@ -12,6 +12,11 @@ public class ItemDTO {
     public ItemDTO() {
     }
 
+    public ItemDTO(String description, int qtyOnHand) {
+        this.description = description;
+        this.qtyOnHand = qtyOnHand;
+    }
+
     public ItemDTO(String code, String description, String packageSize, Double unitPrice, int qtyOnHand) {
         this.code = code;
         this.description = description;

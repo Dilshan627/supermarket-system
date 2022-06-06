@@ -74,4 +74,12 @@ public class AdministratorFormController {
     public void inComeOnAction(ActionEvent actionEvent) throws IOException {
         util.navigation.navigate(sideContext, "income");
     }
+
+    public void orderDetailsOnAction(ActionEvent actionEvent) throws IOException {
+        util.navigation.navigate(sideContext, "order-details");
+    }
+
+    public void storesOnAction(ActionEvent actionEvent) throws IOException {
+        util.navigation.navigate(sideContext, "stores");
+    }
 }

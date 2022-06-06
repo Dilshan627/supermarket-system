@@ -77,4 +77,14 @@ public class ItemDAOImpl implements ItemDAO {
         String count = resultSet.getString(1);
         return count;
     }
+
+    @Override
+    public ArrayList<Item> Item() throws SQLException, ClassNotFoundException {
+        ResultSet rst = SQLUtil.executeQuery("SELECT Description,QtyOnHand FROM Item");
+        ArrayList<Item> allItems = new ArrayList<>();
+        while (rst.next()) {
+            allItems.add(new Item(rst.getString(1), rst.getInt(2)));
+        }
+        return allItems;
+    }
 }

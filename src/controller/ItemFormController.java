@@ -81,7 +81,6 @@ public class ItemFormController {
 
     public void btnSave_OnAction(ActionEvent actionEvent) {
 
-
         if (txtDescription.getLength() != 0 && txtUnitPrice.getLength() != 0 && txtQtyOnHand.getLength() != 0 && txtPackageSize.getLength() != 0) {
 
 
@@ -152,8 +151,6 @@ public class ItemFormController {
 
         }
     }
-
-
 
     private boolean existItem(String code) throws SQLException, ClassNotFoundException {
         return itemBO.itemExist(code);
