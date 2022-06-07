@@ -40,7 +40,6 @@ public class AdministratorFormController {
         ArrayList<CustomDTO> customDTOS = null;
         try {
             customDTOS = bo.MostSellItem();
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -78,7 +77,6 @@ public class AdministratorFormController {
     public void orderDetailsOnAction(ActionEvent actionEvent) throws IOException {
         util.navigation.navigate(sideContext, "order-details");
     }
-
     public void storesOnAction(ActionEvent actionEvent) throws IOException {
         util.navigation.navigate(sideContext, "stores");
     }

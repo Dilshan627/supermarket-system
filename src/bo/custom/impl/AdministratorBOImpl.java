@@ -15,7 +15,6 @@ public class AdministratorBOImpl implements AdministratorBO {
     @Override
     public ArrayList<CustomDTO> MostSellItem() throws SQLException, ClassNotFoundException {
         ArrayList<Custom> all = queryDAO.MostSellItem();
-
         ArrayList<CustomDTO> MostSellItem = new ArrayList<>();
         for (Custom item : all) {
             MostSellItem.add(new CustomDTO(item.getDescription(), item.getOrderqty()));
