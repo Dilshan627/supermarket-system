@@ -23,7 +23,6 @@ public class AdministratorFormController {
     public AnchorPane context;
     public PieChart pieOrder;
     public Label lblItem;
-
     public void initialize() {
         setDataPicChart();
         try {
